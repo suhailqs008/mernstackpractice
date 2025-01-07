@@ -24,7 +24,7 @@ router.get("/admission", async (req, res) => {
           { studentName: { $regex: search, $options: "i" } },
           { class: { $regex: search, $options: "i" } },
           { aadharNumber: { $regex: search, $options: "i" } },
-          { studentId: { $regex: search, $options: "i" } },
+          { contactNumber: { $regex: search, $options: "i" } },
           ...(isNumericSearch ? [{ studentId: parseInt(search, 10) }] : []),
         ],
       };

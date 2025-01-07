@@ -46,11 +46,6 @@ const admissionSchema = new mongoose.Schema({
       message: "PAN number must be in the correct format (e.g., ABCDE1234F).",
     },
   },
-  studentId: {
-    type: String,
-    required: true,
-    default: () => `1${uuidv4().replace(/-/g, "").slice(0, 5)}`,
-  },
 });
 
 const AdmissionDetails = mongoose.model("AdmissionDetails", admissionSchema);
