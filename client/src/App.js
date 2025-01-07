@@ -21,6 +21,7 @@ import ClassSix from "./pages/Classes/ClassSix";
 import ClassSeven from "./pages/Classes/ClassSeven";
 import ClassFour from "./pages/Classes/ClassFour";
 import Buses from "./pages/Buses";
+import ClassEight from "./pages/Classes/ClassEight";
 
 function App() {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -42,6 +43,7 @@ function App() {
             <Route path="class-5" element={<ClassFive />} />
             <Route path="class-6" element={<ClassSix />} />
             <Route path="class-7" element={<ClassSeven />} />
+            <Route path="class-8" element={<ClassEight />} />
             <Route path="fees" element={<FeesPage />} />
             <Route path="buses" element={<Buses />} />
             <Route path="result" element={<ResultPage />} />

@@ -107,6 +107,11 @@ const AdmissionsTable = () => {
       render: (_, __, index) => (currentPage - 1) * pageSize + index + 1,
     },
     {
+      title: "StudenId",
+      dataIndex: "studentId",
+      key: "studentId",
+    },
+    {
       title: "Student Name",
       dataIndex: "studentName",
       key: "studentName",
@@ -119,6 +124,21 @@ const AdmissionsTable = () => {
         ) : (
           text
         ),
+    },
+    {
+      title: "Parent Name",
+      dataIndex: "parentName",
+      key: "parentName",
+    },
+    {
+      title: "Aadhar Number",
+      dataIndex: "aadharNumber",
+      key: "aadharNumber",
+    },
+    {
+      title: "Pan Number",
+      dataIndex: "panNumber",
+      key: "panNumber",
     },
     {
       title: "Date of Birth",
@@ -175,15 +195,16 @@ const AdmissionsTable = () => {
           text
         ),
     },
-    {
-      title: "Parent Name",
-      dataIndex: "parentName",
-      key: "parentName",
-    },
+
     {
       title: "Contact Number",
       dataIndex: "contactNumber",
       key: "contactNumber",
+    },
+    {
+      title: "Gender",
+      dataIndex: "gender",
+      key: "gender",
     },
     {
       title: "Address",

@@ -42,6 +42,7 @@ const items = [
     getItem("Class-5", "/admin/class-5", <FaBuilding />),
     getItem("Class-6", "/admin/class-6", <FaBuilding />),
     getItem("Class-7", "/admin/class-7", <FaBuilding />),
+    getItem("Class-8", "/admin/class-8", <FaBuilding />),
   ]),
   getItem("Bus Record", "/admin/buses", <FaBus />),
 ];

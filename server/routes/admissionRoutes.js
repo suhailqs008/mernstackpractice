@@ -15,19 +15,25 @@ router.post("/admission", async (req, res) => {
 router.get("/admission", async (req, res) => {
   try {
     const { search } = req.query;
-    const filter = search
-      ? {
-          $or: [
-            { studentName: { $regex: search, $options: "i" } },
-            { class: { $regex: search, $options: "i" } },
-            { admissionDate: { $regex: search, $options: "i" } },
-          ],
-        }
-      : {};
+    let filter = {};
+
+    if (search) {
+      const isNumericSearch = /^\d+$/.test(search);
+      filter = {
+        $or: [
+          { studentName: { $regex: search, $options: "i" } },
+          { class: { $regex: search, $options: "i" } },
+          { aadharNumber: { $regex: search, $options: "i" } },
+          { studentId: { $regex: search, $options: "i" } },
+          ...(isNumericSearch ? [{ studentId: parseInt(search, 10) }] : []),
+        ],
+      };
+    }
 
     const admissions = await Admission.find(filter);
     res.status(200).json(admissions);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Failed to fetch admissions" });
   }
 });
