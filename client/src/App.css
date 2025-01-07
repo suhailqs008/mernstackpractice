@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+
+* {
+  font-family: "Bree Serif", serif;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.ant-menu-horizontal {
+  justify-content: center;
+}
+
+.ant-carousel {
+  margin-bottom: 20px;
+}
+
+.ant-layout-footer {
+  background-color: #001529;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.class-table-filters-search {
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+  padding: 0px 10px;
+}
+.fees-form {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  width: 60%;
+  margin: 30px auto;
+  padding: 10px;
+}

@@ -1,0 +1,16 @@
+.custom-table .ant-table-container {
+  scrollbar-width: thin;
+  scrollbar-color: #eaeaea transparent;
+}
+
+.custom-table .ant-table-body {
+  overflow-y: auto;
+}
+.table-header {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 14px;
+  width: 98%;
+  margin: 10px auto;
+}

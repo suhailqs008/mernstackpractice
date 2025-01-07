@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+
+.main-container {
+  display: flex;
+  padding: 0px 10px;
+  justify-content: space-between;
+}
+h1 {
+  text-align: center;
+}
+.form-wrapper {
+  width: 60%;
+  background-color: rgba(246, 247, 247, 0.894);
+}
+
+.left-image-container {
+  display: grid;
+  width: 45%;
+  height: 600px;
+  background-color: rgba(246, 247, 247, 0.894);
+  place-items: center;
+}
+
+.left-image-container img {
+  width: 100%;
+}
+
+.form-wrapper-div {
+  margin: auto;
+  margin-top: 0px;
+
+  padding: 20px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+@media screen and (min-width: 200px) and (max-width: 1024px) {
+  .main-container {
+    display: block;
+  }
+
+  .form-wrapper {
+    width: 100%;
+  }
+
+  .left-image-container {
+    width: 100%;
+  }
+
+  .form-wrapper-div {
+    margin: auto;
+  }
+}
+
+.submit_btn {
+  width: 20%;
+  margin: 20px auto;
+}
+
+.submit_btn button {
+  width: 100%;
+  color: white;
+  transition: all 0.5s ease-in-out;
+  margin: auto;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: black;
+  cursor: pointer;
+}
