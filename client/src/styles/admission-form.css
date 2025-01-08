@@ -17,7 +17,6 @@ h1 {
 .left-image-container {
   display: grid;
   width: 45%;
-  height: 600px;
   background-color: rgba(246, 247, 247, 0.894);
   place-items: center;
 }
@@ -49,7 +48,7 @@ h1 {
   flex-direction: column;
 }
 .form-item {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 @media screen and (min-width: 200px) and (max-width: 1024px) {

@@ -93,40 +93,6 @@ const ContactUs = () => {
             </div>
           </Form>
         </div>
-        {/* <div
-          style={{
-            flex: "1 1 300px",
-            padding: "20px",
-            background: "#1890ff",
-            color: "#fff",
-            height: "250px",
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            borderRadius: "8px",
-            fontSize: "15px",
-          }}
-        >
-          <h3
-            style={{ textAlign: "center", marginBottom: "20px", color: "#fff" }}
-          >
-            Contact Us
-          </h3>
-          <p>
-            <EnvironmentOutlined style={{ marginRight: "8px" }} />
-            Address: Your Address Here
-          </p>
-          <p>
-            <PhoneOutlined style={{ marginRight: "8px" }} />
-            Phone: +1-000-000-000
-          </p>
-          <p>
-            <MailOutlined style={{ marginRight: "8px" }} />
-            Email: example@xyz.com
-          </p>
-          <p>
-            <GlobalOutlined style={{ marginRight: "8px" }} />
-            Website: www.yourcompany.com
-          </p>
-        </div> */}
       </div>
     </div>
   );

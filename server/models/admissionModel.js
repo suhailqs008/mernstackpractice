@@ -3,7 +3,6 @@ const { v4: uuidv4 } = require("uuid");
 
 const admissionSchema = new mongoose.Schema({
   studentName: { type: String, required: true },
-  studentName: { type: String, required: true },
   gender: { type: String, required: true },
   class: {
     type: String,

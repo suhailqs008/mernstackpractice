@@ -287,7 +287,7 @@ const AdmissionForm = () => {
         <img
           className="admissionForm-image"
           src={
-            "https://png.pngtree.com/png-clipart/20220924/original/pngtree-school-admission-open-text-promotional-banner-for-social-media-post-template-png-image_8630355.png"
+            "https://www.shutterstock.com/image-vector/admission-open-banner-social-media-600nw-2227399121.jpg"
           }
           alt="admission"
         />

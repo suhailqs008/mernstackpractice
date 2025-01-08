@@ -27,7 +27,6 @@ const AdmissionSearch = () => {
 
   const searchUrl = process.env.REACT_APP_ADMISSION_URL;
   const updateUrl = process.env.REACT_APP_FEES_URL;
-  console.log(updateUrl);
 
   const handleSearch = async (value) => {
     if (!value) {
@@ -267,7 +266,7 @@ const AdmissionSearch = () => {
             onClick={handleSave}
             style={{ marginTop: "20px" }}
           >
-            Save
+            Submit
           </Button>
         </Form>
       </Drawer>
