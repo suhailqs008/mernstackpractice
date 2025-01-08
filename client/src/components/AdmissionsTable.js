@@ -104,17 +104,19 @@ const AdmissionsTable = () => {
       title: "S.No",
       dataIndex: "serialNumber",
       key: "serialNumber",
+      fixed: "left",
+      width: 80,
+
       render: (_, __, index) => (currentPage - 1) * pageSize + index + 1,
     },
-    {
-      title: "StudenId",
-      dataIndex: "studentId",
-      key: "studentId",
-    },
+
     {
       title: "Student Name",
       dataIndex: "studentName",
       key: "studentName",
+      fixed: "left",
+      width: 100,
+
       render: (text, record) =>
         editingRowKey === record.key ? (
           <Input
@@ -178,7 +180,7 @@ const AdmissionsTable = () => {
     {
       title: "Session Name",
       dataIndex: "session",
-      key: "session",
+
       render: (text, record) =>
         editingRowKey === record.key ? (
           <Select
@@ -205,6 +207,8 @@ const AdmissionsTable = () => {
       title: "Gender",
       dataIndex: "gender",
       key: "gender",
+      fixed: "left",
+      width: 90,
     },
     {
       title: "Address",
@@ -215,11 +219,15 @@ const AdmissionsTable = () => {
       title: "Admission Date",
       dataIndex: "admissionDate",
       key: "admissionDate",
+      fixed: "right",
+
       render: (admissionDate) => new Date(admissionDate).toLocaleDateString(),
     },
     {
       title: "Actions",
       key: "actions",
+      fixed: "right",
+      width: 100,
       render: (_, record) =>
         editingRowKey === record.key ? (
           <Button onClick={handleSave}>

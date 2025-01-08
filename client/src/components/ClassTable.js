@@ -123,13 +123,13 @@ const ClassTable = ({ classId, pageSize = 10, url }) => {
       <div className="table-header">
         {filteredStudents.length > 0 ? (
           <p>
-            Showing {startRecord} to {endRecord} out of{" "}
-            {filteredStudents.length} records
+            Showing {startRecord} to {endRecord} out of
+            {filteredStudents.length} students
           </p>
         ) : (
           <p>No records available</p>
         )}
-        <p>Total {filteredStudents.length} records</p>
+        <p>Total {filteredStudents.length} students</p>
       </div>
 
       <div className="class-table-filters-search">

@@ -1,6 +1,19 @@
 import React, { useState } from "react";
-import { Button, Flex, Input, Spin, Table, message } from "antd";
+import {
+  Button,
+  DatePicker,
+  Drawer,
+  Form,
+  Input,
+  message,
+  Popconfirm,
+  Select,
+  Spin,
+  Table,
+} from "antd";
+import { IoArrowForwardCircle } from "react-icons/io5";
 import axios from "axios";
+
 const { Search } = Input;
 
 const AdmissionSearch = () => {
@@ -8,7 +21,13 @@ const AdmissionSearch = () => {
   const [loading, setLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [searched, setSearched] = useState(false);
-  const url = process.env.REACT_APP_ADMISSION_URL;
+  const [drawerVisible, setDrawerVisible] = useState(false);
+  const [editingRecord, setEditingRecord] = useState(null);
+  const [form] = Form.useForm();
+
+  const searchUrl = process.env.REACT_APP_ADMISSION_URL;
+  const updateUrl = process.env.REACT_APP_FEES_URL;
+  console.log(updateUrl);
 
   const handleSearch = async (value) => {
     if (!value) {
@@ -19,11 +38,10 @@ const AdmissionSearch = () => {
     setLoading(true);
     setSearched(true);
     try {
-      const response = await axios.get(url, {
+      const response = await axios.get(searchUrl, {
         params: { search: value },
       });
       setAdmissions(response.data);
-      console.log(response.data, "response");
     } catch (error) {
       message.error("Failed to fetch admissions. Please try again.");
     } finally {
@@ -37,6 +55,31 @@ const AdmissionSearch = () => {
     setSearched(false);
   };
 
+  const handleEdit = (record) => {
+    setEditingRecord(record);
+    form.setFieldsValue(record);
+    setDrawerVisible(true);
+  };
+
+  const handleSave = async () => {
+    try {
+      const updatedValues = form.getFieldsValue();
+      if (!editingRecord) {
+        message.error("No record is selected for updating.");
+        return;
+      }
+
+      const response = await axios.post(updateUrl, updatedValues);
+      message.success("Data sent successfully.");
+      setDrawerVisible(false);
+    } catch (error) {
+      console.error("Error while sending data to the backend:", error);
+      message.error("Failed to send data. Please try again.");
+    }
+  };
+
+  {
+  }
   const columns = [
     {
       title: "Student Name",
@@ -49,24 +92,32 @@ const AdmissionSearch = () => {
       key: "class",
     },
     {
-      title: "Admission Date",
-      dataIndex: "admissionDate",
-      key: "admissionDate",
-    },
-    {
-      title: "Parent Name",
+      title: "Father Name",
       dataIndex: "parentName",
       key: "parentName",
     },
     {
-      title: "Contact Number",
+      title: "Session",
+      dataIndex: "session",
+      key: "session",
+    },
+
+    {
+      title: "Mobile",
       dataIndex: "contactNumber",
       key: "contactNumber",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
+      title: "Actions",
+      key: "actions",
+      render: (_, record) => (
+        <div style={{ display: "flex", gap: "8px" }}>
+          <Button onClick={() => handleEdit(record)}>
+            <IoArrowForwardCircle style={{ color: "green" }} />
+            Proceed
+          </Button>
+        </div>
+      ),
     },
   ];
 
@@ -90,17 +141,10 @@ const AdmissionSearch = () => {
 
       {loading ? (
         <div
-          style={{
-            width: "30%",
-            padding: "10px",
-            alignItems: "center",
-            justifyContent: "center",
-            display: "flex",
-            flexDirection: "column",
-          }}
+          style={{ display: "flex", flexDirection: "column", width: "80px" }}
         >
-          <Spin size="large"></Spin>
-          <h3 style={{ marginTop: "10px" }}>Searching...</h3>
+          <Spin style={{ marginBottom: "10px" }} size="large" />
+          Searching......
         </div>
       ) : (
         <>
@@ -108,16 +152,125 @@ const AdmissionSearch = () => {
             <Table
               columns={columns}
               dataSource={admissions}
-              rowKey="_id"
+              rowKey="key"
               bordered
             />
           ) : (
-            searched && (
-              <h1 style={{ textAlign: "left" }}>Student details not found</h1>
-            )
+            searched && <h3>No student details found.</h3>
           )}
         </>
       )}
+      <Drawer
+        title="Edit Student Details"
+        visible={drawerVisible}
+        onClose={() => setDrawerVisible(false)}
+        width={400}
+      >
+        <Form form={form} layout="vertical">
+          <Form.Item
+            label="Student Name"
+            name="studentName"
+            rules={[{ required: true, message: "Student Name is required" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Class"
+            name="class"
+            rules={[{ required: true, message: "Class is required" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Father Name"
+            name="parentName"
+            rules={[{ required: true, message: "Father Name is required" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Session"
+            name="session"
+            rules={[{ required: true, message: "Session is required" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Month"
+            name="month"
+            rules={[{ required: true, message: "Month is required" }]}
+          >
+            <Select placeholder="Select Month">
+              {[
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December",
+              ].map((month) => (
+                <Select.Option key={month} value={month}>
+                  {month}
+                </Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+
+          <Form.Item
+            label="Roll Number"
+            name="rollNumber"
+            rules={[{ required: true, message: "Roll Number is required" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Amount"
+            name="amount"
+            rules={[{ required: true, message: "Amount is required" }]}
+          >
+            <Input type="number" />
+          </Form.Item>
+
+          <Form.Item
+            label="Date"
+            name="date"
+            rules={[{ required: true, message: "Date is required" }]}
+          >
+            <DatePicker format="YYYY-MM-DD" style={{ width: "100%" }} />
+          </Form.Item>
+
+          <Form.Item
+            label="Payment Method"
+            name="paymentMethod"
+            rules={[{ required: true, message: "Payment Method is required" }]}
+          >
+            <Select placeholder="Select Payment Method">
+              <Select.Option value="Cash">Cash</Select.Option>
+              <Select.Option value="Card">Card</Select.Option>
+              <Select.Option value="Online">Online</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <Button
+            type="primary"
+            onClick={handleSave}
+            style={{ marginTop: "20px" }}
+          >
+            Save
+          </Button>
+        </Form>
+      </Drawer>
     </div>
   );
 };

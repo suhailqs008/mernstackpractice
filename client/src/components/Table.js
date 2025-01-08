@@ -67,9 +67,9 @@ const Table = ({
     <div>
       <div className="table-header">
         <p>
-          Showing {startRecord} to {endRecord} out of {totalRecord} records
+          Showing {startRecord} to {endRecord} out of {totalRecord} students
         </p>
-        Total {totalRecord} records
+        Total {totalRecord} students
       </div>
       <div className="class-table-filters-search">
         <div style={{ display: "flex", flexDirection: "column", width: "30%" }}>
@@ -142,7 +142,7 @@ const Table = ({
           pageSize,
           onChange: (page) => onPageChange(page),
         }}
-        scroll={{ y: 400 }}
+        scroll={{ y: 400, x: "max-content" }}
       />
     </div>
   );

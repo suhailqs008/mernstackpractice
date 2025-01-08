@@ -7,6 +7,7 @@
 }
 h1 {
   text-align: center;
+  margin-bottom: 10px;
 }
 .form-wrapper {
   width: 60%;
@@ -29,15 +30,32 @@ h1 {
   margin: auto;
   margin-top: 0px;
 
-  padding: 20px;
+  padding: 10px 20px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
+.form_items {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.form-item-input {
+  width: 350px;
+  margin-bottom: 15px;
+}
+.form_items1 {
+  display: flex;
+  flex-direction: column;
+}
+.form-item {
+  margin-bottom: 15px;
+}
 
 @media screen and (min-width: 200px) and (max-width: 1024px) {
   .main-container {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 
   .form-wrapper {
@@ -55,7 +73,7 @@ h1 {
 
 .submit_btn {
   width: 20%;
-  margin: 20px auto;
+  margin: auto;
 }
 
 .submit_btn button {

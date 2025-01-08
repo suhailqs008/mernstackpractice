@@ -5,7 +5,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { LoadingOutlined } from "@ant-design/icons";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/admission-form.css";
-import school from "../assets/admission.png";
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -58,18 +57,14 @@ const AdmissionForm = () => {
     { label: "2025-2026", value: "2025-2026" },
     { label: "2026-2027", value: "2026-2027" },
   ];
+  const genderoption = [
+    { label: "Male", value: "male" },
+    { label: "Female", value: "female" },
+    { label: "other", value: "other" },
+  ];
 
   return (
     <div className="main-container">
-      <div className="left-image-container">
-        <img
-          className="admissionForm-image"
-          src={
-            "https://png.pngtree.com/png-clipart/20220924/original/pngtree-school-admission-open-text-promotional-banner-for-social-media-post-template-png-image_8630355.png"
-          }
-          alt="admission"
-        />
-      </div>
       <div className="form-wrapper">
         <div className="form-wrapper-div">
           <h1>Admission Form</h1>
@@ -77,14 +72,15 @@ const AdmissionForm = () => {
             form={form}
             onFinish={handleFormSubmit}
             name="admissionForm"
-            layout="horizonal"
+            layout="horizontal"
             initialValues={{ remember: true }}
             autoComplete="off"
           >
-            <div className="form_items">
+            <div className="form_items1">
               <Form.Item
                 label="Student Name"
                 name="studentName"
+                className="form-item"
                 rules={[
                   { required: true, message: "Please enter student name!" },
                   { validator: validateName },
@@ -95,6 +91,7 @@ const AdmissionForm = () => {
               <Form.Item
                 label="Father's Name"
                 name="parentName"
+                className="form-item"
                 rules={[
                   { required: true, message: "Please enter father's name!" },
                   { validator: validateName },
@@ -104,35 +101,11 @@ const AdmissionForm = () => {
               </Form.Item>
             </div>
 
-            <div className="form_items">
-              <Form.Item
-                label="Date of Birth"
-                name="dateOfBirth"
-                rules={[{ required: true, message: "Please select DOB!" }]}
-              >
-                <DatePicker
-                  style={{ width: "100%" }}
-                  disabledDate={(current) => {
-                    return current && current > new Date();
-                  }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                label="Admission Date"
-                name="admissionDate"
-                rules={[
-                  { required: true, message: "Please select admission date!" },
-                ]}
-              >
-                <DatePicker style={{ width: "100%" }} />
-              </Form.Item>
-            </div>
-
-            <div className="form_items">
+            <div className="form_items1">
               <Form.Item
                 label="Class Name"
                 name="class"
+                className="form-item"
                 rules={[
                   { required: true, message: "Please select class name!" },
                 ]}
@@ -144,8 +117,76 @@ const AdmissionForm = () => {
                 />
               </Form.Item>
               <Form.Item
+                label="PAN Number"
+                name="panNumber"
+                className="form-item"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter your PAN number!",
+                  },
+                  {
+                    pattern: /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/,
+                    message:
+                      "PAN number must follow the format: 5 letters, 4 digits, 1 letter.",
+                  },
+                ]}
+              >
+                <Input
+                  placeholder="Enter PAN Number"
+                  maxLength={10}
+                  onChange={(e) => {
+                    const value = e.target.value
+                      .toUpperCase()
+                      .replace(/[^A-Z0-9]/g, "");
+                    form.setFieldsValue({ panNumber: value });
+                  }}
+                />
+              </Form.Item>
+            </div>
+
+            <div className="form_items1">
+              <Form.Item
+                label="Admission Date"
+                name="admissionDate"
+                className="form-item"
+                rules={[
+                  { required: true, message: "Please select admission date!" },
+                ]}
+              >
+                <DatePicker style={{ width: "100%" }} />
+              </Form.Item>
+              <Form.Item
+                label="Date of Birth"
+                name="dateOfBirth"
+                className="form-item"
+                rules={[{ required: true, message: "Please select DOB!" }]}
+              >
+                <DatePicker
+                  style={{ width: "100%" }}
+                  disabledDate={(current) => {
+                    return current && current > new Date();
+                  }}
+                />
+              </Form.Item>
+            </div>
+            <div className="form_items1">
+              <Form.Item
+                name="gender"
+                label="Gender"
+                className="form-item"
+                rules={[{ required: true, message: "Please select gender!" }]}
+              >
+                <Select
+                  showSearch
+                  placeholder="Select Gender"
+                  options={genderoption}
+                />
+              </Form.Item>
+              <Form.Item
                 label="Session"
                 name="session"
+                className="form-item"
                 rules={[{ required: true, message: "Please select session!" }]}
               >
                 <Select
@@ -154,23 +195,62 @@ const AdmissionForm = () => {
                   options={sessionOptions}
                 />
               </Form.Item>
+            </div>
+            <div className="form_items">
               <Form.Item
-                name="gender"
-                label="Gender"
-                rules={[{ required: true, message: "Please select gender!" }]}
+                label="Mobile"
+                name="contactNumber"
+                className="form-item-input"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter your mobile number!",
+                  },
+                  {
+                    pattern: /^[0-9]{10}$/,
+                    message: "Mobile number must be exactly 10 digits!",
+                  },
+                ]}
               >
-                <Select placeholder="Select Gender" allowClear>
-                  <Option value="male">Male</Option>
-                  <Option value="female">Female</Option>
-                  <Option value="other">Other</Option>
-                </Select>
+                <Input
+                  placeholder="Enter Mobile Number"
+                  maxLength={10}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, "");
+                    form.setFieldsValue({ contactNumber: value });
+                  }}
+                />
+              </Form.Item>
+              <Form.Item
+                label="Aadhar Number"
+                name="aadharNumber"
+                className="form-item-input"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter your Aadhar number!",
+                  },
+                  {
+                    pattern: /^[0-9]{12}$/,
+                    message: "Aadhar number must be exactly 12 digits!",
+                  },
+                ]}
+              >
+                <Input
+                  placeholder="Enter Aadhar Number"
+                  maxLength={12}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, "");
+                    form.setFieldsValue({ aadharNumber: value });
+                  }}
+                />
               </Form.Item>
             </div>
-
-            <div className="form_items">
+            <div className="form_items1">
               <Form.Item
                 label="Address"
                 name="address"
+                className="form-item"
                 rules={[
                   { required: true, message: "Please enter your address!" },
                   {
@@ -179,31 +259,7 @@ const AdmissionForm = () => {
                   },
                 ]}
               >
-                <TextArea rows={3} />
-              </Form.Item>
-
-              <Form.Item
-                label="Contact Number"
-                name="contactNumber"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter your contact number!",
-                  },
-                  {
-                    pattern: /^[0-9]{10}$/,
-                    message: "Contact number must be exactly 10 digits!",
-                  },
-                ]}
-              >
-                <Input
-                  placeholder="Enter Contact Number"
-                  maxLength={10}
-                  onChange={(e) => {
-                    const value = e.target.value.replace(/\D/g, "");
-                    form.setFieldsValue({ contactNumber: value });
-                  }}
-                />
+                <TextArea rows={3} flex={3} />
               </Form.Item>
             </div>
 
@@ -224,7 +280,17 @@ const AdmissionForm = () => {
             </div>
           </Form>
         </div>
+
         <ToastContainer />
+      </div>
+      <div className="left-image-container">
+        <img
+          className="admissionForm-image"
+          src={
+            "https://png.pngtree.com/png-clipart/20220924/original/pngtree-school-admission-open-text-promotional-banner-for-social-media-post-template-png-image_8630355.png"
+          }
+          alt="admission"
+        />
       </div>
     </div>
   );
