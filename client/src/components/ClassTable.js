@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table as AntdTable, Spin, Input, Select } from "antd";
 import axios from "axios";
-
+import "../styles/classTable.css";
 const ClassTable = ({ classId, pageSize = 10, url }) => {
   const [students, setStudents] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);

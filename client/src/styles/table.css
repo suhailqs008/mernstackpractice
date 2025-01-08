@@ -5,12 +5,18 @@
 
 .custom-table .ant-table-body {
   overflow-y: auto;
+  font-size: 13px;
+  color: #596e79;
+  font-weight: 500;
 }
 .table-header {
   display: flex;
   justify-content: space-between;
 
-  font-size: 14px;
+  font-size: 12px;
   width: 98%;
   margin: 10px auto;
+}
+.ant-table-thead {
+  font-size: 12px;
 }
