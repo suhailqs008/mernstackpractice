@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const feesSchema = new mongoose.Schema({
   studentName: { type: String, required: true },
-  fatherName: { type: String, required: true },
+  parentName: { type: String, required: true },
   class: {
     type: String,
     required: true,
