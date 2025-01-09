@@ -154,7 +154,7 @@ const AdmissionForm = () => {
                   { required: true, message: "Please select admission date!" },
                 ]}
               >
-                <DatePicker style={{ width: "100%" }} />
+                <DatePicker format="YYYY-MM-DD" style={{ width: "100%" }} />
               </Form.Item>
               <Form.Item
                 label="Date of Birth"
@@ -163,6 +163,7 @@ const AdmissionForm = () => {
                 rules={[{ required: true, message: "Please select DOB!" }]}
               >
                 <DatePicker
+                  format="YYYY-MM-DD"
                   style={{ width: "100%" }}
                   disabledDate={(current) => {
                     return current && current > new Date();

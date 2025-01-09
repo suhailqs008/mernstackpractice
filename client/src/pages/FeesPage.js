@@ -13,6 +13,7 @@ import {
 } from "antd";
 import { IoArrowForwardCircle } from "react-icons/io5";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const { Search } = Input;
 
@@ -24,7 +25,7 @@ const AdmissionSearch = () => {
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [editingRecord, setEditingRecord] = useState(null);
   const [form] = Form.useForm();
-
+  const navigate = useNavigate();
   const searchUrl = process.env.REACT_APP_ADMISSION_URL;
   const updateUrl = process.env.REACT_APP_FEES_URL;
 
@@ -69,7 +70,9 @@ const AdmissionSearch = () => {
       }
 
       const response = await axios.post(updateUrl, updatedValues);
-      message.success("Data sent successfully.");
+      console.log(response, "res");
+
+      message.success("Fees Submitted successfully.");
       setDrawerVisible(false);
     } catch (error) {
       console.error("Error while sending data to the backend:", error);
@@ -84,16 +87,19 @@ const AdmissionSearch = () => {
       title: "Student Name",
       dataIndex: "studentName",
       key: "studentName",
+      fixed: "left",
     },
     {
       title: "Class",
       dataIndex: "class",
       key: "class",
+      fixed: "left",
     },
     {
       title: "Father Name",
       dataIndex: "parentName",
       key: "parentName",
+      fixed: "left",
     },
     {
       title: "Session",
@@ -105,14 +111,16 @@ const AdmissionSearch = () => {
       title: "Mobile",
       dataIndex: "contactNumber",
       key: "contactNumber",
+      fixed: "right",
     },
     {
       title: "Actions",
       key: "actions",
+      fixed: "right",
       render: (_, record) => (
         <div style={{ display: "flex", gap: "8px" }}>
           <Button onClick={() => handleEdit(record)}>
-            <IoArrowForwardCircle style={{ color: "green" }} />
+            <IoArrowForwardCircle />
             Proceed
           </Button>
         </div>

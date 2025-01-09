@@ -16,6 +16,7 @@ import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import { SiGoogleforms } from "react-icons/si";
 import ScrollingText from "./ScrollingText";
 import { BsFillBuildingsFill } from "react-icons/bs";
+import { IoSettings } from "react-icons/io5";
 
 const { Header, Content, Sider } = Layout;
 
@@ -45,6 +46,7 @@ const items = [
     getItem("Class-8", "/admin/class-8", <FaBuilding />),
   ]),
   getItem("Bus Record", "/admin/buses", <FaBus />),
+  getItem("Manage Admin", "/admin/user", <IoSettings />),
 ];
 
 const Sidebar = () => {

@@ -65,12 +65,16 @@ const ClassTable = ({ classId, pageSize = 10, url }) => {
       title: "S.No",
       dataIndex: "serialNumber",
       key: "serialNumber",
+      fixed: "left",
+      width: 80,
       render: (_, __, index) => (currentPage - 1) * pageSize + index + 1,
     },
     {
       title: "Student Name",
       dataIndex: "studentName",
       key: "studentName",
+      fixed: "left",
+      width: 100,
     },
     {
       title: "Date of Birth",
@@ -97,6 +101,16 @@ const ClassTable = ({ classId, pageSize = 10, url }) => {
       title: "Contact Number",
       dataIndex: "contactNumber",
       key: "contactNumber",
+    },
+    {
+      title: "Aadhar Number",
+      dataIndex: "aadharNumber",
+      key: "aadharNumber",
+    },
+    {
+      title: "Pan Number",
+      dataIndex: "panNumber",
+      key: "panNumber",
     },
     {
       title: "Address",
@@ -198,7 +212,7 @@ const ClassTable = ({ classId, pageSize = 10, url }) => {
             total: filteredStudents.length,
             onChange: (page) => setCurrentPage(page),
           }}
-          scroll={{ y: 400 }}
+          scroll={{ y: 400, x: "max-content" }}
         />
       )}
     </div>

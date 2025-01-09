@@ -5,18 +5,43 @@
 
 .custom-table .ant-table-body {
   overflow-y: auto;
-  font-size: 13px;
+  font-size: 12px;
   color: #596e79;
   font-weight: 500;
 }
 .table-header {
   display: flex;
   justify-content: space-between;
-
   font-size: 12px;
   width: 98%;
   margin: 10px auto;
 }
-.ant-table-thead {
+.class-table-filters-search {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+  padding: 0px 10px;
+}
+.ant-table-thead tr {
   font-size: 12px;
+  overflow-wrap: normal;
+}
+
+@media screen and (min-width: 421px) and (max-width: 1024px) {
+  .class-table-filters-search {
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    gap: 10px;
+  }
+  .table-header {
+    width: 90%;
+    justify-content: space-between;
+
+    margin: auto;
+    padding: 0px 10px;
+    gap: 0px;
+  }
 }

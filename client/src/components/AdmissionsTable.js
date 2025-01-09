@@ -207,8 +207,6 @@ const AdmissionsTable = () => {
       title: "Gender",
       dataIndex: "gender",
       key: "gender",
-      fixed: "left",
-      width: 90,
     },
     {
       title: "Address",
@@ -218,8 +216,6 @@ const AdmissionsTable = () => {
     {
       title: "Admission Date",
       dataIndex: "admissionDate",
-      key: "admissionDate",
-      fixed: "right",
 
       render: (admissionDate) => new Date(admissionDate).toLocaleDateString(),
     },

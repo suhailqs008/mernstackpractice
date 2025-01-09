@@ -22,6 +22,7 @@ import ClassSeven from "./pages/Classes/ClassSeven";
 import ClassFour from "./pages/Classes/ClassFour";
 import Buses from "./pages/Buses";
 import ClassEight from "./pages/Classes/ClassEight";
+import ManageAdmin from "./pages/ManageAdmin";
 
 function App() {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -47,6 +48,7 @@ function App() {
             <Route path="fees" element={<FeesPage />} />
             <Route path="buses" element={<Buses />} />
             <Route path="result" element={<ResultPage />} />
+            <Route path="user" element={<ManageAdmin />} />
           </Route>
         </Routes>
       </Router>
