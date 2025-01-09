@@ -23,6 +23,7 @@ import ClassFour from "./pages/Classes/ClassFour";
 import Buses from "./pages/Buses";
 import ClassEight from "./pages/Classes/ClassEight";
 import ManageAdmin from "./pages/ManageAdmin";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -52,6 +53,7 @@ function App() {
           </Route>
         </Routes>
       </Router>
+      <ToastContainer />
     </div>
   );
 }

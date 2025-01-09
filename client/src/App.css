@@ -33,3 +33,28 @@ body {
   margin: 30px auto;
   padding: 10px;
 }
+/* <----feepage---> */
+.fees-drawer {
+  display: flex;
+  justify-content: space-between;
+}
+.result-generate-form {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+}
+.result-submit-btn {
+  width: 200px;
+  margin: auto;
+}
+
+.result-heading {
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 200px) and (max-width: 1024px) {
+  .result-generate-form {
+    flex-wrap: wrap;
+  }
+}

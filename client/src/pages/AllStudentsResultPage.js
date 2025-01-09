@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Table from "./Table";
+import Table from "../components/Table";
 import dayjs from "dayjs";
 import { toast } from "react-toastify";
 
@@ -18,7 +18,7 @@ import {
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import moment from "moment";
 
-const AdmissionsTable = () => {
+const AllStudentsResultPage = () => {
   const [admissions, setAdmissions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [drawerVisible, setDrawerVisible] = useState(false);
@@ -54,7 +54,7 @@ const AdmissionsTable = () => {
 
   const fetchAdmissions = async () => {
     try {
-      const response = await axios.get(url);
+      const response = await axios.get("http://localhost:5000/api/result");
       setAdmissions(response.data);
     } catch (error) {
       console.error("Error fetching admissions:", error);
@@ -129,7 +129,7 @@ const AdmissionsTable = () => {
       dataIndex: "serialNumber",
       key: "serialNumber",
       fixed: "left",
-      width: 80,
+      width: 60,
       render: (_, __, index) => (currentPage - 1) * pageSize + index + 1,
     },
     {
@@ -143,48 +143,54 @@ const AdmissionsTable = () => {
       key: "parentName",
     },
     {
-      title: "Aadhar Number",
-      dataIndex: "aadharNumber",
-      key: "aadharNumber",
+      title: "Roll Number",
+      dataIndex: "rollNumber",
+      key: "rollNumber",
+      width: 80,
     },
-    {
-      title: "Pan Number",
-      dataIndex: "panNumber",
-      key: "panNumber",
-    },
-
     {
       title: "Class Name",
       dataIndex: "class",
       key: "class",
     },
     {
-      title: "Session Name",
-      dataIndex: "session",
-      key: "session",
-    },
-    {
-      title: "Contact Number",
-      dataIndex: "contactNumber",
-      key: "contactNumber",
-    },
-    {
-      title: "Gender",
-      dataIndex: "gender",
-      key: "gender",
+      title: "English",
+      key: "english",
       width: 80,
+      render: (text, record) => record.marks?.english || "N/A",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
+      title: "Hindi",
+      key: "hindi",
+      render: (text, record) => record.marks?.hindi || "N/A",
     },
     {
-      title: "Admission Date",
-      dataIndex: "admissionDate",
+      title: "Mathematics",
+      key: "mathematics",
+      width: 110,
+      render: (text, record) => record.marks?.mathematics || "N/A",
+    },
+    {
+      title: "Science",
+      key: "science",
+      width: 80,
 
-      render: (admissionDate) => new Date(admissionDate).toLocaleDateString(),
+      render: (text, record) => record.marks?.science || "N/A",
     },
+    {
+      title: "Social Studies",
+      key: "socialstudies",
+      width: 110,
+      render: (text, record) => record.marks?.socialstudies || "N/A",
+    },
+    {
+      title: "Sports",
+      key: "sports",
+      width: 80,
+
+      render: (text, record) => record.marks?.sports || "N/A",
+    },
+
     {
       title: "Date of Birth",
       dataIndex: "dateofBirth",
@@ -227,7 +233,7 @@ const AdmissionsTable = () => {
       {loading ? (
         <div style={{ textAlign: "center", marginTop: "30px" }}>
           <Spin size="large" />
-          <p style={{ marginTop: "10px" }}>Loading...</p>
+          <p>Loading...</p>
         </div>
       ) : (
         <Table
@@ -251,9 +257,9 @@ const AdmissionsTable = () => {
         <Form
           onFinish={handleSave}
           layout="vertical"
-          initialValues={editingData} // Set initial values for the form
-          onValuesChange={
-            (changedValues, allValues) => setEditingData(allValues) // Update editingData when form values change
+          initialValues={editingData}
+          onValuesChange={(changedValues, allValues) =>
+            setEditingData(allValues)
           }
         >
           <Form.Item
@@ -357,4 +363,4 @@ const AdmissionsTable = () => {
   );
 };
 
-export default AdmissionsTable;
+export default AllStudentsResultPage;

@@ -14,6 +14,7 @@ import {
 import { IoArrowForwardCircle } from "react-icons/io5";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const { Search } = Input;
 
@@ -72,7 +73,8 @@ const AdmissionSearch = () => {
       const response = await axios.post(updateUrl, updatedValues);
       console.log(response, "res");
 
-      message.success("Fees Submitted successfully.");
+      toast.success("Fees Submitted successfully.!");
+
       setDrawerVisible(false);
     } catch (error) {
       console.error("Error while sending data to the backend:", error);
@@ -171,108 +173,114 @@ const AdmissionSearch = () => {
         title="Edit Student Details"
         visible={drawerVisible}
         onClose={() => setDrawerVisible(false)}
-        width={400}
+        width={600}
       >
-        <Form form={form} layout="vertical">
-          <Form.Item
-            label="Student Name"
-            name="studentName"
-            rules={[{ required: true, message: "Student Name is required" }]}
-          >
-            <Input />
-          </Form.Item>
+        <Form form={form} onFinish={handleSave} layout="vertical">
+          <div className="fees-drawer">
+            <Form.Item
+              label="Student Name"
+              name="studentName"
+              rules={[{ required: true, message: "Student Name is required" }]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label="Class"
-            name="class"
-            rules={[{ required: true, message: "Class is required" }]}
-          >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label="Class"
+              name="class"
+              rules={[{ required: true, message: "Class is required" }]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label="Father Name"
-            name="parentName"
-            rules={[{ required: true, message: "Father Name is required" }]}
-          >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label="Father Name"
+              name="parentName"
+              rules={[{ required: true, message: "Father Name is required" }]}
+            >
+              <Input />
+            </Form.Item>
+          </div>
 
-          <Form.Item
-            label="Session"
-            name="session"
-            rules={[{ required: true, message: "Session is required" }]}
-          >
-            <Input />
-          </Form.Item>
+          <div className="fees-drawer">
+            <Form.Item
+              label="Session"
+              name="session"
+              rules={[{ required: true, message: "Session is required" }]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label="Month"
-            name="month"
-            rules={[{ required: true, message: "Month is required" }]}
-          >
-            <Select placeholder="Select Month">
-              {[
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December",
-              ].map((month) => (
-                <Select.Option key={month} value={month}>
-                  {month}
-                </Select.Option>
-              ))}
-            </Select>
-          </Form.Item>
+            <Form.Item
+              label="Amount"
+              name="amount"
+              rules={[{ required: true, message: "Amount is required" }]}
+            >
+              <Input type="number" />
+            </Form.Item>
 
-          <Form.Item
-            label="Roll Number"
-            name="rollNumber"
-            rules={[{ required: true, message: "Roll Number is required" }]}
-          >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label="Roll Number"
+              name="rollNumber"
+              rules={[{ required: true, message: "Roll Number is required" }]}
+            >
+              <Input />
+            </Form.Item>
+          </div>
+          <div className="fees-drawer">
+            <Form.Item
+              label="Payment Method"
+              name="paymentMethod"
+              rules={[
+                { required: true, message: "Payment Method is required" },
+              ]}
+            >
+              <Select placeholder="Select Payment Method">
+                <Select.Option value="Cash">Cash</Select.Option>
+                <Select.Option value="Online">Online</Select.Option>
+              </Select>
+            </Form.Item>
+            <Form.Item
+              label="Date"
+              name="date"
+              style={{ width: "170px" }}
+              rules={[{ required: true, message: "Date is required" }]}
+            >
+              <DatePicker format="YYYY-MM-DD" style={{ width: "100%" }} />
+            </Form.Item>
 
-          <Form.Item
-            label="Amount"
-            name="amount"
-            rules={[{ required: true, message: "Amount is required" }]}
-          >
-            <Input type="number" />
-          </Form.Item>
-
-          <Form.Item
-            label="Date"
-            name="date"
-            rules={[{ required: true, message: "Date is required" }]}
-          >
-            <DatePicker format="YYYY-MM-DD" style={{ width: "100%" }} />
-          </Form.Item>
-
-          <Form.Item
-            label="Payment Method"
-            name="paymentMethod"
-            rules={[{ required: true, message: "Payment Method is required" }]}
-          >
-            <Select placeholder="Select Payment Method">
-              <Select.Option value="Cash">Cash</Select.Option>
-              <Select.Option value="Card">Card</Select.Option>
-              <Select.Option value="Online">Online</Select.Option>
-            </Select>
-          </Form.Item>
-
+            <Form.Item
+              label="Month"
+              style={{ width: "170px" }}
+              name="month"
+              rules={[{ required: true, message: "Month is required" }]}
+            >
+              <Select placeholder="Select Month">
+                {[
+                  "January",
+                  "February",
+                  "March",
+                  "April",
+                  "May",
+                  "June",
+                  "July",
+                  "August",
+                  "September",
+                  "October",
+                  "November",
+                  "December",
+                ].map((month) => (
+                  <Select.Option key={month} value={month}>
+                    {month}
+                  </Select.Option>
+                ))}
+              </Select>
+            </Form.Item>
+          </div>
           <Button
             type="primary"
-            onClick={handleSave}
             style={{ marginTop: "20px" }}
+            htmlType="submit"
           >
             Submit
           </Button>

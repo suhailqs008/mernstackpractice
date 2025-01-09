@@ -158,7 +158,7 @@ const AdmissionForm = () => {
               </Form.Item>
               <Form.Item
                 label="Date of Birth"
-                name="dateOfBirth"
+                name="dateofBirth"
                 className="form-item"
                 rules={[{ required: true, message: "Please select DOB!" }]}
               >
@@ -281,8 +281,6 @@ const AdmissionForm = () => {
             </div>
           </Form>
         </div>
-
-        <ToastContainer />
       </div>
       <div className="left-image-container">
         <img

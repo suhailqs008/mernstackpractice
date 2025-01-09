@@ -7,35 +7,12 @@ const Table = ({
   dataSource,
   onPageChange,
   pageSize,
-  totalRecord,
   currentPage,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSession, setSelectedSession] = useState("");
   const [selectedClass, setSelectedClass] = useState("");
   const [filteredStudents, setFilteredStudents] = useState([]);
-
-  const startRecord = (currentPage - 1) * pageSize + 1;
-  const endRecord = Math.min(currentPage * pageSize, totalRecord);
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const handleSessionFilterChange = (value) => {
-    setSelectedSession(value);
-  };
-
-  const handleClassFilterChange = (value) => {
-    setSelectedClass(value);
-  };
-
-  const sessionOptions = Array.from(
-    new Set(dataSource.map((student) => student.session))
-  );
-  const classOptions = Array.from(
-    new Set(dataSource.map((student) => student.class))
-  );
 
   const filterStudents = () => {
     let filtered = dataSource;
@@ -63,13 +40,36 @@ const Table = ({
     filterStudents();
   }, [selectedSession, selectedClass, searchTerm, dataSource]);
 
+  const startRecord = (currentPage - 1) * pageSize + 1;
+  const endRecord = Math.min(currentPage * pageSize, filteredStudents.length);
+
+  const sessionOptions = Array.from(
+    new Set(dataSource.map((student) => student.session))
+  );
+  const classOptions = Array.from(
+    new Set(dataSource.map((student) => student.class))
+  );
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSessionFilterChange = (value) => {
+    setSelectedSession(value);
+  };
+
+  const handleClassFilterChange = (value) => {
+    setSelectedClass(value);
+  };
+
   return (
     <div>
       <div className="table-header">
         <p>
-          Showing {startRecord} to {endRecord} out of {totalRecord} students
+          Showing {startRecord} to {endRecord} out of {filteredStudents.length}{" "}
+          students
         </p>
-        Total {totalRecord} students
+        Total {filteredStudents.length} students
       </div>
       <div className="class-table-filters-search">
         <div style={{ display: "flex", flexDirection: "column", width: "30%" }}>
@@ -137,10 +137,14 @@ const Table = ({
       <AntdTable
         className="custom-table"
         columns={columns}
-        dataSource={filteredStudents}
+        dataSource={filteredStudents.slice(
+          (currentPage - 1) * pageSize,
+          currentPage * pageSize
+        )}
         pagination={{
           pageSize,
           onChange: (page) => onPageChange(page),
+          total: filteredStudents.length,
         }}
         scroll={{ y: 400, x: "max-content" }}
       />

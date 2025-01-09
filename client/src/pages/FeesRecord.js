@@ -12,6 +12,8 @@ import {
 } from "@ant-design/icons";
 import moment from "moment";
 import Table from "../components/Table";
+import FeesModal from "./FeesReceiptModal";
+import FeesReceiptModal from "./FeesReceiptModal";
 const { Option } = Select;
 const { TextArea } = Input;
 
@@ -23,12 +25,9 @@ const FeesRecordPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
-
   const printRef = useRef(null);
-
   const pageSize = 10;
   const url = process.env.REACT_APP_FEES_URL;
-  console.log(url);
 
   const classOptions = [
     { label: "Class-1", value: "class-1" },
@@ -135,9 +134,7 @@ const FeesRecordPage = () => {
       [field]: value,
     }));
   };
-  function capitalizeFirstWord(str) {
-    return str.replace(/^\w/, (char) => char.toUpperCase());
-  }
+
   const currentDate = new Date();
   const options = {
     timeZone: "Asia/Kolkata",
@@ -150,6 +147,9 @@ const FeesRecordPage = () => {
     second: "2-digit",
     hour12: true,
   };
+  function capitalizeFirstWord(str) {
+    return str.replace(/^\w/, (char) => char.toUpperCase());
+  }
   const indianTime = currentDate.toLocaleString("en-IN", options);
 
   const columns = [
@@ -241,6 +241,7 @@ const FeesRecordPage = () => {
       title: "Roll Number",
       dataIndex: "rollNumber",
       key: "rollNumber",
+      width: 80,
     },
     {
       title: "Date",
@@ -305,7 +306,7 @@ const FeesRecordPage = () => {
 
   return (
     <div>
-      <h1>Admissions Table</h1>
+      <h1>Fees Submission Details</h1>
       {loading ? (
         <div
           style={{
@@ -334,7 +335,6 @@ const FeesRecordPage = () => {
       )}
 
       <Modal
-        title="Print Slip"
         open={isModalOpen}
         width={600}
         onCancel={handleModalClose}
@@ -349,118 +349,11 @@ const FeesRecordPage = () => {
       >
         <div ref={printRef}>
           {selectedRow ? (
-            <div className="receipt-container">
-              <div className="header">
-                <div className="logo">
-                  <img
-                    src="https://i.pinimg.com/474x/58/8d/6e/588d6ef34e23dd63d5edfc9a59645ff3.jpg"
-                    alt="Logo"
-                    style={{
-                      width: "50px",
-                      height: "50px",
-                      borderRadius: "50%",
-                      marginBottom: "10px",
-                    }}
-                  />
-                </div>
-                <div className="school-details">
-                  <h1>APNA SCHOOL SHAHABAD,HARDOI</h1>
-                  <p>English/HINDI Medium School </p>
-                  <p>Shahabad, Hardoi, Uttar Pradesh-241124.</p>
-                  <p>Phone No.: 0265-2316677</p>
-                </div>
-                <div className="receipt-label">
-                  <img
-                    src="https://i.pinimg.com/474x/58/8d/6e/588d6ef34e23dd63d5edfc9a59645ff3.jpg"
-                    alt="Logo"
-                    style={{
-                      width: "50px",
-                      height: "50px",
-                      borderRadius: "50%",
-                      marginBottom: "10px",
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="student-details">
-                <div className="fees-details">
-                  <p>
-                    <strong>Student Name:</strong> {selectedRow.studentName}
-                  </p>
-                  <p>
-                    <strong>Father Name:</strong> {selectedRow.parentName}
-                  </p>
-                  <p>
-                    <strong>Session:</strong> {selectedRow.session}
-                  </p>
-                </div>
-                <div className="fees-details">
-                  <p>
-                    <p>
-                      <strong>Payment Date:</strong>{" "}
-                      {new Date(selectedRow.date).toLocaleDateString()}
-                    </p>
-                  </p>
-                  <p>
-                    <strong>Amount:</strong> {selectedRow.amount}
-                  </p>
-                  <p>
-                    <strong>Month:</strong> {selectedRow.month}
-                  </p>
-                </div>
-                <div className="fees-details">
-                  <p>
-                    <strong>Payment Method:{selectedRow.paymentMethod}</strong>
-                  </p>
-                  <p>
-                    <strong>
-                      Roll Number:-
-                      {selectedRow.rollNumber ? selectedRow.rollNumber : ".."}
-                    </strong>
-                  </p>
-                  <p>
-                    <strong>{capitalizeFirstWord(selectedRow.class)}</strong>
-                  </p>
-                </div>
-              </div>
-              <table className="fee-table">
-                <thead>
-                  <tr>
-                    <th>Sr.</th>
-                    <th>Particulars</th>
-                    <th>Amount</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Monthly Fees</td>
-                    <td>{selectedRow.amount}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="total-section">
-                <p>
-                  <strong>Total Amount:</strong> Rs. {selectedRow.amount}
-                </p>
-              </div>
-              <div className="remarks">
-                <p>
-                  Fees Amount once paid will not be refundable or transferable.
-                </p>
-              </div>
-              <div className="footer">
-                <p>
-                  <strong>Payment Date:</strong>{" "}
-                  {new Date(selectedRow.date).toLocaleDateString()}
-                </p>
-
-                <p>
-                  <strong>Sign:</strong> _______________________
-                </p>
-              </div>
-              <p style={{ fontSize: "10px" }}> {indianTime}</p>
-            </div>
+            <FeesReceiptModal
+              selectedRow={selectedRow}
+              indianTime={indianTime}
+              capitalizeFirstWord={capitalizeFirstWord}
+            />
           ) : (
             <p>No record selected for printing.</p>
           )}
