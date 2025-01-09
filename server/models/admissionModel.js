@@ -24,6 +24,7 @@ const admissionSchema = new mongoose.Schema({
   contactNumber: { type: String, required: true },
   address: { type: String, required: true },
   admissionDate: { type: Date, required: true },
+  dateofBirth: { type: Date, required: true },
   session: {
     type: String,
     required: true,
