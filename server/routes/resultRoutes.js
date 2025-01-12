@@ -56,20 +56,24 @@ router.get("/result", async (req, res) => {
     let filter = {};
 
     if (search) {
-      filter = {
-        $or: [
-          { studentName: { $regex: search, $options: "i" } },
-          { class: { $regex: search, $options: "i" } },
-          { parentName: { $regex: search, $options: "i" } },
-        ],
-      };
+      if (!isNaN(search)) {
+        filter = { rollNumber: parseInt(search) };
+      } else {
+        filter = {
+          $or: [
+            { studentName: { $regex: search, $options: "i" } },
+            { class: { $regex: search, $options: "i" } },
+            { parentName: { $regex: search, $options: "i" } },
+          ],
+        };
+      }
     }
 
-    const admissions = await Result.find(filter);
-    res.status(200).json(admissions);
+    const results = await Result.find(filter);
+    res.status(200).json(results);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to fetch admissions" });
+    console.error("Error fetching results:", error);
+    res.status(500).json({ error: "Failed to fetch results" });
   }
 });
 
