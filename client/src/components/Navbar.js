@@ -15,7 +15,7 @@ const Navbar = () => {
   const menu = (
     <Menu>
       <Menu.Item key="1" onClick={handleLogout}>
-        Admin
+        School Login
       </Menu.Item>
     </Menu>
   );

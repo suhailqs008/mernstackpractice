@@ -73,4 +73,29 @@ router.get("/result", async (req, res) => {
   }
 });
 
+router.put("/result/:id", async (req, res) => {
+  try {
+    const updateResult = await Result.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!updateResult)
+      return res.status(404).json({ message: "Admission not found" });
+    res.status(200).json(updateResult);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+router.delete("/result/:id", async (req, res) => {
+  try {
+    const deleteResult = await Result.findByIdAndDelete(req.params.id);
+    if (!deleteResult)
+      return res.status(404).json({ message: "Admission not found" });
+    res.status(200).json({ message: "Admission deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete the admission" });
+  }
+});
 module.exports = router;

@@ -1,75 +1,65 @@
 .report-card {
   font-family: Arial, sans-serif;
-  width: 800px;
-  margin: 0 auto;
-  border: 1px solid #000;
+  margin: 20px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: rgba(247, 249, 250, 0.897);
+  border: 1px solid black;
 }
-
 .header {
-  text-align: center;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
 }
 
-.school-logo img {
-  max-width: 100px;
+.school-logo {
+  width: 80px;
+  height: 80px;
 }
 
-.school-info h1 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.result-hosting {
-  background-color: orange;
-  padding: 5px;
-  color: white;
-  font-weight: bold;
-}
-
-.main-content {
+.header-text {
+  flex-grow: 1;
   text-align: center;
 }
 
-.student-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  text-align: left;
+.school-name {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+
+.affiliation {
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.report-title {
+  text-align: center;
   margin-top: 20px;
 }
 
-.student-info p {
-  margin: 0;
-  font-size: 14px;
+.student-details {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
 }
 
-.student-info span {
-  font-weight: bold;
+.roll-info {
+  text-align: right;
 }
 
 .marks-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
 }
 
 .marks-table th,
 .marks-table td {
-  border: 1px solid #000;
-  padding: 10px;
+  border: 1px solid black;
+  padding: 8px;
   text-align: center;
 }
 
 .footer {
-  margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  font-weight: bold;
-}
-
-.signatures p {
-  margin: 0;
-  padding: 10px;
+  margin-top: 20px;
 }

@@ -44,7 +44,7 @@ body {
   justify-content: space-between;
 }
 .result-submit-btn {
-  width: 200px;
+  width: 10%;
   margin: auto;
 }
 
@@ -53,8 +53,30 @@ body {
   margin-top: 10px;
 }
 
-@media screen and (min-width: 200px) and (max-width: 1024px) {
+@media screen and (min-width: 200px) and (max-width: 420px) {
   .result-generate-form {
     flex-wrap: wrap;
+  }
+  .result-submit-btn {
+    width: 80%;
+    margin: auto;
+  }
+  .result-heading {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  .header-hello-admin,
+  .gif-animation {
+    display: none;
+  }
+}
+@media screen and (min-width: 421px) and (max-width: 1024px) {
+  .result-generate-form {
+    flex-wrap: wrap;
+  }
+  .result-submit-btn {
+    width: 30%;
+    margin: auto;
   }
 }

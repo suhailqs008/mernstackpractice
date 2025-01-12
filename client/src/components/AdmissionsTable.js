@@ -116,13 +116,6 @@ const AdmissionsTable = () => {
     }
   };
 
-  const handleInputChange = (field, value) => {
-    setEditingData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
-  };
-
   const columns = [
     {
       title: "S.No",
@@ -251,9 +244,9 @@ const AdmissionsTable = () => {
         <Form
           onFinish={handleSave}
           layout="vertical"
-          initialValues={editingData} // Set initial values for the form
-          onValuesChange={
-            (changedValues, allValues) => setEditingData(allValues) // Update editingData when form values change
+          initialValues={editingData}
+          onValuesChange={(changedValues, allValues) =>
+            setEditingData(allValues)
           }
         >
           <Form.Item

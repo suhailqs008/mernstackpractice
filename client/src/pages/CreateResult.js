@@ -16,6 +16,8 @@ const classOptions = [
   { label: "Class-9", value: "class-9" },
   { label: "Class-10", value: "class-10" },
 ];
+const resultUrl = process.env.REACT_APP_RESULT_URL;
+
 const CreateResult = () => {
   const [form] = Form.useForm();
   const [refresh, setRefresh] = useState(false);
@@ -39,10 +41,7 @@ const CreateResult = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/result",
-        formattedValues
-      );
+      const response = await axios.post(resultUrl, formattedValues);
       setLoading(false);
       toast.success("Congratulations! Record Saved Successfully!");
       form.resetFields();

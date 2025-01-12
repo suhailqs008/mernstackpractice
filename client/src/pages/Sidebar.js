@@ -92,12 +92,13 @@ const Sidebar = () => {
           }}
         >
           <div
+            className="header-hello-admin"
             style={{
               display: "flex",
               justifyContent: "space-between",
             }}
           >
-            <span style={{ marginRight: "10px" }}>
+            <span className="gif-animation" style={{ marginRight: "10px" }}>
               Hello Admin
               <img
                 style={{ width: "30px", marginRight: "10px" }}

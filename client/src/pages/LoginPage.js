@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "antd/dist/reset.css";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (values) => {
+  const handleLogin = async (values) => {
     const { email, password } = values;
+    setLoading(true);
 
-    if (email === "demo@gmail.com" && password === "demo123") {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/admin/login",
+        {
+          email,
+          password,
+        }
+      );
+
       localStorage.setItem("isLoggedIn", true);
+      localStorage.setItem("authToken", response.data.token);
+
       navigate("/admin");
-    } else {
-      alert("Invalid credentials. Please try again.");
+    } catch (error) {
+      setLoading(false);
+      alert(error.response?.data?.message || "Login failed");
     }
   };
 
@@ -69,7 +83,7 @@ const LoginPage = () => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" block>
+            <Button type="primary" htmlType="submit" block loading={loading}>
               Login
             </Button>
           </Form.Item>

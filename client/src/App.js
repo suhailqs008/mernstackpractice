@@ -25,16 +25,24 @@ import ClassEight from "./pages/Classes/ClassEight";
 import ManageAdmin from "./pages/ManageAdmin";
 import { ToastContainer } from "react-toastify";
 
-function App() {
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+const PrivateRoute = ({ element }) => {
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const authToken = localStorage.getItem("authToken");
 
+  if (!isLoggedIn || !authToken) {
+    return <Navigate to="/login" />;
+  }
+  return element;
+};
+
+function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/admin" element={<Sidebar />}>
+          <Route path="/admin" element={<PrivateRoute element={<Sidebar />} />}>
             <Route path="admissionform" element={<AdmissionForm />} />
             <Route path="admissiondata" element={<AdmissionsTable />} />
             <Route path="feerecord" element={<FeesRecord />} />

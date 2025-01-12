@@ -6,6 +6,8 @@ import { PrinterOutlined } from "@ant-design/icons";
 import { FaLaptopMedical } from "react-icons/fa";
 import { FaDatabase } from "react-icons/fa6";
 import AllStudentsResultPage from "./AllStudentsResultPage";
+import ChartVisulisation from "./ChartVisulisation";
+import { FaChartPie } from "react-icons/fa";
 
 const ResultPageTabs = () => (
   <Tabs
@@ -14,11 +16,21 @@ const ResultPageTabs = () => (
       {
         label: (
           <span>
+            <FaChartPie style={{ marginRight: 8 }} />
+            View
+          </span>
+        ),
+        key: "1",
+        children: <ChartVisulisation />,
+      },
+      {
+        label: (
+          <span>
             <FaLaptopMedical style={{ marginRight: 8 }} />
             Create Result
           </span>
         ),
-        key: "1",
+        key: "2",
         children: <CreateResult />,
       },
       {
@@ -28,7 +40,7 @@ const ResultPageTabs = () => (
             All Results
           </span>
         ),
-        key: "2",
+        key: "3",
         children: <AllStudentsResultPage />,
       },
 
@@ -39,7 +51,7 @@ const ResultPageTabs = () => (
             Print Result
           </span>
         ),
-        key: "3",
+        key: "4",
         children: <PrintResult />,
       },
     ]}

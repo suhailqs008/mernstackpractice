@@ -1,9 +1,9 @@
 .receipt-container {
-  margin: 20px auto;
-  padding: 20px 30px;
-
-  border: 1px solid #000;
   font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 20px;
+  background-color: rgba(247, 249, 250, 0.897);
+  border: 1px solid black;
 }
 
 .header {
@@ -73,17 +73,13 @@
   justify-content: space-between;
 }
 .fees-details {
-  display: flex;
-  border: 1px solid #d9dcde;
   border-bottom: 0px;
   align-items: center;
   margin-bottom: 0px;
   justify-content: center;
   justify-content: space-around;
 }
-.fees-details:nth-child(3) {
-  border-bottom: 1px solid #d9dcde;
-}
+
 .fees-details p {
   margin-bottom: 10px !important ;
 }

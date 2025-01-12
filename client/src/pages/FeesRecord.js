@@ -3,6 +3,8 @@ import axios from "axios";
 import { Button, Drawer, Modal, Popconfirm, message } from "antd";
 import { Form, Input, Select, DatePicker, Spin } from "antd";
 import { useReactToPrint } from "react-to-print";
+import { RiMoneyRupeeCircleFill } from "react-icons/ri";
+
 import "../styles/receipt.css";
 import {
   EditOutlined,
@@ -25,6 +27,8 @@ const FeesRecordPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
+  const [totalAmount, setTotalAmount] = useState(0);
+
   const printRef = useRef(null);
   const pageSize = 10;
   const url = process.env.REACT_APP_FEES_URL;
@@ -50,14 +54,24 @@ const FeesRecordPage = () => {
   const fetchAdmissions = async () => {
     try {
       const response = await axios.get(url);
-      setAdmissions(response.data);
+      const data = response.data;
+
+      setAdmissions(data);
+
+      calculateTotalAmount(data);
     } catch (error) {
       console.error("Error fetching admissions:", error);
     } finally {
       setLoading(false);
     }
   };
-
+  const calculateTotalAmount = (data) => {
+    const total = data.reduce(
+      (acc, record) => acc + (parseFloat(record.amount) || 0),
+      0
+    );
+    setTotalAmount(total);
+  };
   useEffect(() => {
     fetchAdmissions();
   }, []);
@@ -80,12 +94,9 @@ const FeesRecordPage = () => {
     setSelectedRow(null);
     setIsModalOpen(false);
   };
-  const handleAfterPrint = React.useCallback(() => {
-    console.log("`onAfterPrint` called");
-  }, []);
+  const handleAfterPrint = React.useCallback(() => {}, []);
 
   const handleBeforePrint = React.useCallback(() => {
-    console.log("`onBeforePrint` called");
     return Promise.resolve();
   }, []);
   const printFn = useReactToPrint({
@@ -122,6 +133,9 @@ const FeesRecordPage = () => {
       message.success("Record deleted successfully!");
       setAdmissions((prevAdmissions) =>
         prevAdmissions.filter((admission) => admission._id !== id)
+      );
+      calculateTotalAmount(
+        admissions.filter((admission) => admission._id !== id)
       );
     } catch (error) {
       console.error("Error deleting record:", error);
@@ -307,6 +321,9 @@ const FeesRecordPage = () => {
   return (
     <div>
       <h1>Fees Submission Details</h1>
+      <h2 style={{ padding: "0px 10px", color: "#0073e6" }}>
+        Total Amount: ₹{totalAmount.toFixed(2)}
+      </h2>
       {loading ? (
         <div
           style={{
@@ -333,7 +350,6 @@ const FeesRecordPage = () => {
           totalRecord={admissions.length}
         />
       )}
-
       <Modal
         open={isModalOpen}
         width={600}

@@ -1,4 +1,6 @@
 import React, { useRef, useState } from "react";
+import dayjs from "dayjs";
+import { PrinterOutlined } from "@ant-design/icons";
 import {
   Button,
   DatePicker,
@@ -18,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import FeesReceiptModal from "./FeesReceiptModal";
 import { useReactToPrint } from "react-to-print";
+import ReportCard from "./StudentResultModel";
 
 const { Search } = Input;
 
@@ -28,14 +31,10 @@ const PrintResult = () => {
   const [searched, setSearched] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
-
-  const [drawerVisible, setDrawerVisible] = useState(false);
-  const [editingRecord, setEditingRecord] = useState(null);
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const printRef = useRef(null);
-  const searchUrl = process.env.REACT_APP_ADMISSION_URL;
-  const updateUrl = process.env.REACT_APP_FEES_URL;
+  const resultUrl = process.env.REACT_APP_RESULT_URL;
 
   function capitalizeFirstWord(str) {
     return str.replace(/^\w/, (char) => char.toUpperCase());
@@ -64,7 +63,7 @@ const PrintResult = () => {
     setLoading(true);
     setSearched(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/result", {
+      const response = await axios.get(resultUrl, {
         params: { search: value },
       });
       setAdmissions(response.data);
@@ -138,14 +137,25 @@ const PrintResult = () => {
       key: "session",
     },
     {
+      title: "Date of Birth",
+      dataIndex: "dateofBirth",
+      key: "dateofBirth",
+      render: (dob) => {
+        const validDob = dayjs(dob);
+        return validDob.isValid()
+          ? validDob.format("YYYY-MM-DD")
+          : "Invalid Date";
+      },
+    },
+    {
       title: "Actions",
       key: "actions",
       fixed: "right",
       render: (_, record) => (
         <div style={{ display: "flex", gap: "8px" }}>
           <Button onClick={() => handleModalOpen(record)}>
-            <IoArrowForwardCircle />
-            Proceed
+            <PrinterOutlined />
+            Print Result
           </Button>
         </div>
       ),
@@ -194,7 +204,7 @@ const PrintResult = () => {
 
       <Modal
         open={isModalOpen}
-        width={600}
+        width={700}
         onCancel={handleModalClose}
         footer={[
           <Button key="close" onClick={handleModalClose}>
@@ -207,7 +217,7 @@ const PrintResult = () => {
       >
         <div ref={printRef}>
           {selectedRow ? (
-            <FeesReceiptModal
+            <ReportCard
               selectedRow={selectedRow}
               indianTime={indianTime}
               capitalizeFirstWord={capitalizeFirstWord}

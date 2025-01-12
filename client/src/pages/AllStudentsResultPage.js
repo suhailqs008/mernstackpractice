@@ -17,6 +17,7 @@ import {
 } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import moment from "moment";
+import ChartComponent from "../components/ChartComponent";
 
 const AllStudentsResultPage = () => {
   const [admissions, setAdmissions] = useState([]);
@@ -26,7 +27,7 @@ const AllStudentsResultPage = () => {
   const [editingRowKey, setEditingRowKey] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 10;
-  const url = process.env.REACT_APP_ADMISSION_URL;
+  const resultUrl = process.env.REACT_APP_RESULT_URL;
 
   const classOptions = [
     { label: "Class-1", value: "class-1" },
@@ -54,7 +55,7 @@ const AllStudentsResultPage = () => {
 
   const fetchAdmissions = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/result");
+      const response = await axios.get(resultUrl);
       setAdmissions(response.data);
     } catch (error) {
       console.error("Error fetching admissions:", error);
@@ -84,7 +85,7 @@ const AllStudentsResultPage = () => {
         dateOfBirth: editingData.dateOfBirth.toISOString(),
         admissionDate: editingData.admissionDate.toISOString(),
       };
-      await axios.put(`${url}/${editingRowKey}`, updatedRecord);
+      await axios.put(`${resultUrl}/${editingRowKey}`, updatedRecord);
       setAdmissions((prevAdmissions) =>
         prevAdmissions.map((admission) =>
           admission.key === editingRowKey ? updatedRecord : admission
@@ -105,7 +106,7 @@ const AllStudentsResultPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${url}/${id}`);
+      await axios.delete(`${resultUrl}/${id}`);
       message.success("Record deleted successfully!");
       setAdmissions((prevAdmissions) =>
         prevAdmissions.filter((admission) => admission._id !== id)
@@ -114,13 +115,6 @@ const AllStudentsResultPage = () => {
       console.error("Error deleting record:", error);
       message.error("Failed to delete record.");
     }
-  };
-
-  const handleInputChange = (field, value) => {
-    setEditingData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
   };
 
   const columns = [
@@ -156,25 +150,28 @@ const AllStudentsResultPage = () => {
     {
       title: "English",
       key: "english",
+      dataIndex: "english",
       width: 80,
       render: (text, record) => record.marks?.english || "N/A",
     },
     {
       title: "Hindi",
       key: "hindi",
+      dataIndex: "hindi",
       render: (text, record) => record.marks?.hindi || "N/A",
     },
     {
       title: "Mathematics",
       key: "mathematics",
       width: 110,
+      dataIndex: "mathematics",
       render: (text, record) => record.marks?.mathematics || "N/A",
     },
     {
       title: "Science",
       key: "science",
       width: 80,
-
+      dataIndex: "science",
       render: (text, record) => record.marks?.science || "N/A",
     },
     {
@@ -187,7 +184,7 @@ const AllStudentsResultPage = () => {
       title: "Sports",
       key: "sports",
       width: 80,
-
+      dataIndex: "sports",
       render: (text, record) => record.marks?.sports || "N/A",
     },
 
