@@ -67,7 +67,7 @@ const AdmissionForm = () => {
     <div className="main-container">
       <div className="form-wrapper">
         <div className="form-wrapper-div">
-          <h1>Admission Form</h1>
+          <h1 className="heading">Admission Form</h1>
           <Form
             form={form}
             onFinish={handleFormSubmit}

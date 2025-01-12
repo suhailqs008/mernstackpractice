@@ -6,7 +6,7 @@ const ClassTwo = () => {
 
   return (
     <div>
-      <h1>All Students in Class-2</h1>
+      <h1 className="heading">All Students in Class-2</h1>
       <ClassTable classId={2} url={url} />
     </div>
   );

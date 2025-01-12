@@ -72,6 +72,16 @@ const Navbar = () => {
             Gallery
           </ScrollLink>
         </Menu.Item>
+        <Menu.Item key="goalsection">
+          <ScrollLink
+            to="ourGoal-section"
+            smooth={true}
+            duration={500}
+            offset={-100}
+          >
+            Our Goals
+          </ScrollLink>
+        </Menu.Item>
         <Menu.Item key="instructor">
           <ScrollLink
             to="instructor-section"

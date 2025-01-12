@@ -10,7 +10,11 @@ const Teachers = () => {
   ];
 
   return (
-    <div id="teacher-section" style={{ marginBottom: "20px" }}>
+    <div
+      className="bg-indigo-100 mt-4"
+      id="teacher-section"
+      style={{ marginBottom: "20px" }}
+    >
       <h2 style={{ textAlign: "center" }}>Our Teachers</h2>
       <Row gutter={[16, 16]}>
         {images.map((src, index) => (

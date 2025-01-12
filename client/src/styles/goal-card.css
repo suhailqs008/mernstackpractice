@@ -1,0 +1,62 @@
+.goal-card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #001529ec;
+  width: 100%;
+}
+
+.details-card {
+  width: 50%;
+  align-items: center;
+  padding: 10px;
+}
+.button-div {
+  margin: auto;
+  width: 35%;
+  display: flex;
+  justify-content: center;
+}
+.button-div button {
+  width: 100%;
+}
+.image-div {
+  width: 50%;
+}
+
+.image-div img {
+  height: 350px;
+  object-fit: fill;
+  width: 100%;
+}
+@media screen and (min-width: 200px) and (max-width: 420px) {
+  .button-div {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .details-card {
+    width: 100%;
+    align-items: center;
+    padding: 40px;
+  }
+  .image-div {
+    width: 100%;
+  }
+
+  .image-div img {
+    height: 350px;
+    object-fit: fill;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 421px) and (max-width: 1024px) {
+  .button-div {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

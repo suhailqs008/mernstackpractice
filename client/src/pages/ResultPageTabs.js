@@ -14,7 +14,7 @@ const ResultPageTabs = () => (
     items={[
       {
         label: (
-          <span>
+          <span className="tabs-item">
             <MdAssignmentAdd style={{ marginRight: 8 }} />
             Create Result
           </span>
@@ -24,7 +24,7 @@ const ResultPageTabs = () => (
       },
       {
         label: (
-          <span>
+          <span className="tabs-item">
             <FaDatabase style={{ marginRight: 8 }} />
             All Results
           </span>
@@ -35,7 +35,7 @@ const ResultPageTabs = () => (
 
       {
         label: (
-          <span>
+          <span className="tabs-item">
             <PrinterOutlined style={{ marginRight: 8 }} />
             Print Result
           </span>

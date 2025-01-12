@@ -86,7 +86,7 @@ const AlladminDetails = () => {
 
   return (
     <div>
-      <h1>Admin List</h1>
+      <h1 className="heading">Admin List</h1>
       {loading ? (
         <div style={{ textAlign: "center", marginTop: "30px" }}>
           <Spin size="large" />

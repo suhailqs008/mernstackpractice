@@ -1,11 +1,6 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
-import {
-  MailOutlined,
-  PhoneOutlined,
-  EnvironmentOutlined,
-  GlobalOutlined,
-} from "@ant-design/icons";
+import contactup from "../assets/contactus.jpg";
 
 const ContactUs = () => {
   return (
@@ -20,23 +15,23 @@ const ContactUs = () => {
         style={{
           display: "flex",
           flexWrap: "wrap",
-          width: "80%",
+          width: "90%",
           margin: "auto",
-          padding: "10px",
+          padding: "20px",
           gap: "0px",
           background: "#f9f9f9",
         }}
       >
         <div>
           <img
-            style={{ height: "100%" }}
-            src="https://trainee-assignment-dashboard-frontend.vercel.app/assets/laptop2-WM68pCqY.jpg"
+            style={{ height: "100%", width: "100%" }}
+            src={contactup}
             alt="contact"
           />
         </div>
         <div
           style={{
-            flex: "1 1 300px",
+            flex: "1 1 200px",
             padding: "20px",
             background: "#fff",
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",

@@ -11,6 +11,8 @@ import FooterSection from "./FooterSection";
 import ScrollingText from "./ScrollingText";
 import ContactUs from "./ContactUs";
 import Teachers from "./Teachers";
+import Goals from "./Goal";
+import Home from "./Home";
 
 const { Content } = Layout;
 
@@ -23,6 +25,7 @@ function HomePage() {
         <CarouselSection />
         <AboutUs />
         <MediaGallery />
+        <Goals />
         <Teachers />
       </Content>
       <ContactUs />

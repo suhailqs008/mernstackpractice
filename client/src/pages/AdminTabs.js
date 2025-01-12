@@ -13,7 +13,7 @@ const AdminPageTabs = () => (
     items={[
       {
         label: (
-          <span>
+          <span className="tabs-item">
             <DashboardOutlined style={{ marginRight: 8 }} />
             Dashboard
           </span>
@@ -23,7 +23,7 @@ const AdminPageTabs = () => (
       },
       {
         label: (
-          <span>
+          <span className="tabs-item">
             <FaUserPlus style={{ marginRight: 8 }} />
             Create Admin
           </span>
@@ -33,7 +33,7 @@ const AdminPageTabs = () => (
       },
       {
         label: (
-          <span>
+          <span className="tabs-item">
             <FaUsers style={{ marginRight: 8 }} />
             All Admin
           </span>

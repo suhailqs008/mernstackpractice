@@ -11,6 +11,7 @@ h1 {
 }
 .form-wrapper {
   width: 60%;
+  margin-top: 10px;
   background-color: rgba(246, 247, 247, 0.894);
 }
 
