@@ -52,10 +52,20 @@ body {
   text-align: center;
   margin-top: 10px;
 }
+.buses-container {
+  width: 70%;
+  margin: auto;
+}
+.buses-container img {
+  width: 100%;
+}
 
 @media screen and (min-width: 200px) and (max-width: 420px) {
   .result-generate-form {
     flex-wrap: wrap;
+  }
+  .buses-container h1 {
+    font-size: 14px;
   }
   .result-submit-btn {
     width: 80%;
@@ -78,5 +88,15 @@ body {
   .result-submit-btn {
     width: 30%;
     margin: auto;
+  }
+  .buses-container {
+    width: 100%;
+    margin: auto;
+  }
+  .buses-container h1 {
+    font-size: 14px;
+  }
+  .buses-container img {
+    width: 100%;
   }
 }

@@ -17,7 +17,6 @@ import {
 } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import moment from "moment";
-import ChartComponent from "../components/ChartComponent";
 
 const AllStudentsResultPage = () => {
   const [admissions, setAdmissions] = useState([]);
@@ -47,13 +46,8 @@ const AllStudentsResultPage = () => {
     { label: "2025-2026", value: "2025-2026" },
     { label: "2026-2027", value: "2026-2027" },
   ];
-  const genderoption = [
-    { label: "Male", value: "male" },
-    { label: "Female", value: "female" },
-    { label: "other", value: "other" },
-  ];
 
-  const fetchAdmissions = async () => {
+  const fetchAllResults = async () => {
     try {
       const response = await axios.get(resultUrl);
       setAdmissions(response.data);
@@ -65,16 +59,26 @@ const AllStudentsResultPage = () => {
   };
 
   useEffect(() => {
-    fetchAdmissions();
+    fetchAllResults();
   }, []);
 
   const handleEdit = (record) => {
     setEditingRowKey(record.key);
+
+    const { marks, ...rest } = record;
+
     setEditingData({
-      ...record,
+      ...rest,
+      english: marks?.english || "",
+      hindi: marks?.hindi || "",
+      mathematics: marks?.mathematics || "",
+      science: marks?.science || "",
+      socialstudies: marks?.socialstudies || "",
+      sports: marks?.sports || "",
       dateOfBirth: moment(record.dateOfBirth),
       admissionDate: moment(record.admissionDate),
     });
+
     setDrawerVisible(true);
   };
 
@@ -82,8 +86,12 @@ const AllStudentsResultPage = () => {
     try {
       const updatedRecord = {
         ...editingData,
-        dateOfBirth: editingData.dateOfBirth.toISOString(),
-        admissionDate: editingData.admissionDate.toISOString(),
+        dateOfBirth: editingData.dateOfBirth
+          ? editingData.dateOfBirth.toISOString()
+          : null,
+        admissionDate: editingData.admissionDate
+          ? editingData.admissionDate.toISOString()
+          : null,
       };
       await axios.put(`${resultUrl}/${editingRowKey}`, updatedRecord);
       setAdmissions((prevAdmissions) =>
@@ -92,8 +100,7 @@ const AllStudentsResultPage = () => {
         )
       );
       toast.success("Record updated successfully!");
-
-      fetchAdmissions();
+      fetchAllResults();
     } catch (error) {
       console.error("Error updating record:", error);
       message.error("Failed to update record.");
@@ -187,7 +194,6 @@ const AllStudentsResultPage = () => {
       dataIndex: "sports",
       render: (text, record) => record.marks?.sports || "N/A",
     },
-
     {
       title: "Date of Birth",
       dataIndex: "dateofBirth",
@@ -199,6 +205,13 @@ const AllStudentsResultPage = () => {
           : "Invalid Date";
       },
     },
+    {
+      title: "Session",
+      key: "session",
+      width: 80,
+      dataIndex: "session",
+    },
+
     {
       title: "Actions",
       key: "actions",
@@ -255,9 +268,30 @@ const AllStudentsResultPage = () => {
           onFinish={handleSave}
           layout="vertical"
           initialValues={editingData}
-          onValuesChange={(changedValues, allValues) =>
-            setEditingData(allValues)
-          }
+          onValuesChange={(changedValues, allValues) => {
+            if (
+              changedValues.english ||
+              changedValues.hindi ||
+              changedValues.mathematics ||
+              changedValues.science ||
+              changedValues.socialstudies ||
+              changedValues.sports
+            ) {
+              setEditingData({
+                ...allValues,
+                marks: {
+                  english: allValues.english,
+                  hindi: allValues.hindi,
+                  mathematics: allValues.mathematics,
+                  science: allValues.science,
+                  socialstudies: allValues.socialstudies,
+                  sports: allValues.sports,
+                },
+              });
+            } else {
+              setEditingData(allValues);
+            }
+          }}
         >
           <Form.Item
             name="studentName"
@@ -274,81 +308,76 @@ const AllStudentsResultPage = () => {
             <Input />
           </Form.Item>
           <Form.Item
-            name="aadharNumber"
-            label="Aadhar Number"
-            rules={[{ required: true, message: "Please Enter Aadhar Number!" }]}
+            name="rollNumber"
+            label="Roll Number"
+            rules={[{ required: true, message: "Please Enter Roll Number!" }]}
           >
             <Input />
           </Form.Item>
+
           <Form.Item
-            name="panNumber"
-            label="Pan Number"
-            rules={[{ required: true, message: "Please Enter Pan Number!" }]}
+            name="english"
+            label="English"
+            rules={[{ required: true, message: "Please Enter Marks!" }]}
           >
             <Input />
           </Form.Item>
+
           <Form.Item
-            name="contactNumber"
-            label="Contact Number"
-            rules={[
-              { required: true, message: "Please Enter Contact Number!" },
-            ]}
+            name="hindi"
+            label="Hindi"
+            rules={[{ required: true, message: "Please Enter Marks!" }]}
           >
             <Input />
           </Form.Item>
+
+          <Form.Item
+            name="mathematics"
+            label="Mathematics"
+            rules={[{ required: true, message: "Please Enter Marks!" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            name="science"
+            label="Science"
+            rules={[{ required: true, message: "Please Enter Marks!" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            name="socialstudies"
+            label="Social Studies"
+            rules={[{ required: true, message: "Please Enter Marks!" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            name="sports"
+            label="Sports"
+            rules={[{ required: true, message: "Please Enter Marks!" }]}
+          >
+            <Input />
+          </Form.Item>
+
           <Form.Item
             name="dateOfBirth"
             label="Date of Birth"
-            rules={[{ required: true, message: "D.O.B Required!" }]}
+            rules={[{ required: true, message: "Please select a date!" }]}
           >
-            <DatePicker />
-          </Form.Item>
-          <Form.Item
-            name="admissionDate"
-            label="Admission Date"
-            rules={[{ required: true, message: "Admission Date Required!" }]}
-          >
-            <DatePicker />
-          </Form.Item>
-          <Form.Item
-            name="class"
-            label="Class"
-            rules={[{ required: true, message: "Class Name Required!" }]}
-          >
-            <Select>
-              {classOptions.map((option) => (
-                <Select.Option key={option.value} value={option.value}>
-                  {option.label}
-                </Select.Option>
-              ))}
-            </Select>
+            <DatePicker defaultValue={dayjs(editingData.dateOfBirth)} />
           </Form.Item>
           <Form.Item
             name="session"
             label="Session"
-            rules={[{ required: true, message: "Session Required!" }]}
+            rules={[{ required: true, message: "Please select a session!" }]}
           >
-            <Select>
-              {sessionOptions.map((option) => (
-                <Select.Option key={option.value} value={option.value}>
-                  {option.label}
-                </Select.Option>
-              ))}
-            </Select>
+            <Select options={sessionOptions} />
           </Form.Item>
-          <Form.Item
-            name="gender"
-            label="Gender"
-            rules={[{ required: true, message: "Gender Required!" }]}
-          >
-            <Select>
-              {genderoption.map((option) => (
-                <Select.Option key={option.value} value={option.value}>
-                  {option.label}
-                </Select.Option>
-              ))}
-            </Select>
-          </Form.Item>
+
           <Form.Item>
             <Button type="primary" htmlType="submit">
               Save

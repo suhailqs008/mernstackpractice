@@ -46,7 +46,7 @@ const items = [
     getItem("Class-8", "/admin/class-8", <FaBuilding />),
   ]),
   getItem("Bus Record", "/admin/buses", <FaBus />),
-  getItem("Settings", "/admin/user", <IoSettings />),
+  getItem("Manage", "/admin/user", <IoSettings />),
 ];
 
 const Sidebar = () => {

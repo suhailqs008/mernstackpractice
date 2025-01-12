@@ -9,11 +9,11 @@ const AlladminDetails = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 10;
-  const url = process.env.REACT_APP_ADMIN_URL;
+  const url = process.env.REACT_APP_ALL_ADMIN_URL;
 
   const fetchAdmins = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/admin/all");
+      const response = await axios.get(url);
       setAdmins(response.data);
     } catch (error) {
       console.error("Error fetching admin data:", error);
@@ -50,7 +50,7 @@ const AlladminDetails = () => {
       key: "email",
     },
     {
-      title: "Created At",
+      title: "CreatedAt",
       dataIndex: "createdAt",
       key: "createdAt",
     },

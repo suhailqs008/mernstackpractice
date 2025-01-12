@@ -32,7 +32,7 @@ const admissionSchema = new mongoose.Schema({
   },
   aadharNumber: {
     type: String,
-    required: true,
+    required: false,
     validate: {
       validator: (value) => /^[0-9]{12}$/.test(value),
       message: "Aadhar number must be a 12-digit numeric value.",
@@ -40,7 +40,7 @@ const admissionSchema = new mongoose.Schema({
   },
   panNumber: {
     type: String,
-    required: true,
+    required: false,
     validate: {
       validator: (value) => /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value),
       message: "PAN number must be in the correct format (e.g., ABCDE1234F).",

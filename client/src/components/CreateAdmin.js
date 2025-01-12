@@ -6,13 +6,13 @@ const CreateAdmin = ({ token }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("staff");
-
+  const url = process.env.REACT_APP_CREATE_ADMIN_URL;
   const handleCreateAdmin = async (values) => {
     const { email, password, role } = values;
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/admin/create",
+        url,
         { email, password, role },
         { headers: { Authorization: `Bearer ${token}` } }
       );

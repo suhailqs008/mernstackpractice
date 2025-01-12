@@ -7,19 +7,16 @@ import "antd/dist/reset.css";
 const LoginPage = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-
+  const url = process.env.REACT_APP_LOGIN_ADMIN_URL;
   const handleLogin = async (values) => {
     const { email, password } = values;
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/admin/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post(url, {
+        email,
+        password,
+      });
 
       localStorage.setItem("isLoggedIn", true);
       localStorage.setItem("authToken", response.data.token);

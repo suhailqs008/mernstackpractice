@@ -1,27 +1,11 @@
 import React, { useRef, useState } from "react";
 import dayjs from "dayjs";
 import { PrinterOutlined } from "@ant-design/icons";
-import {
-  Button,
-  DatePicker,
-  Drawer,
-  Form,
-  Input,
-  message,
-  Modal,
-  Popconfirm,
-  Select,
-  Spin,
-  Table,
-} from "antd";
-import { IoArrowForwardCircle } from "react-icons/io5";
+import { Button, Input, message, Modal, Spin, Table } from "antd";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import FeesReceiptModal from "./FeesReceiptModal";
+
 import { useReactToPrint } from "react-to-print";
 import ReportCard from "./StudentResultModel";
-
 const { Search } = Input;
 
 const PrintResult = () => {
@@ -31,8 +15,7 @@ const PrintResult = () => {
   const [searched, setSearched] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
-  const [form] = Form.useForm();
-  const navigate = useNavigate();
+
   const printRef = useRef(null);
   const resultUrl = process.env.REACT_APP_RESULT_URL;
 
@@ -167,7 +150,7 @@ const PrintResult = () => {
       <h2>Search Student</h2>
       <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
         <Search
-          placeholder="Enter student name"
+          placeholder="Enter student name/roll no"
           enterButton="Search"
           size="large"
           value={searchValue}

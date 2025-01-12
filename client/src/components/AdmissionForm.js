@@ -122,7 +122,7 @@ const AdmissionForm = () => {
                 className="form-item"
                 rules={[
                   {
-                    required: true,
+                    required: false,
                     message: "Please enter your PAN number!",
                   },
                   {
@@ -228,7 +228,7 @@ const AdmissionForm = () => {
                 className="form-item-input"
                 rules={[
                   {
-                    required: true,
+                    required: false,
                     message: "Please enter your Aadhar number!",
                   },
                   {

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Table as AntdTable, Spin, Input, Select } from "antd";
 import axios from "axios";
+import dayjs from "dayjs";
+
 import "../styles/classTable.css";
 const ClassTable = ({ classId, pageSize = 10, url }) => {
   const [students, setStudents] = useState([]);
@@ -78,9 +80,14 @@ const ClassTable = ({ classId, pageSize = 10, url }) => {
     },
     {
       title: "Date of Birth",
-      dataIndex: "dateOfBirth",
-      key: "dateOfBirth",
-      render: (dob) => new Date(dob).toLocaleDateString(),
+      dataIndex: "dateofBirth",
+      key: "dateofBirth",
+      render: (dob) => {
+        const validDob = dayjs(dob);
+        return validDob.isValid()
+          ? validDob.format("YYYY-MM-DD")
+          : "Invalid Date";
+      },
     },
     {
       title: "Class Name",

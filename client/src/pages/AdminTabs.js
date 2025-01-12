@@ -4,6 +4,8 @@ import CreateAdmin from "../components/CreateAdmin";
 import { FaUsers } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";
 import AlladminDetails from "../components/AlladminDetails";
+import AdminCard from "./AdminCard";
+import { DashboardOutlined } from "@ant-design/icons";
 
 const AdminPageTabs = () => (
   <Tabs
@@ -12,11 +14,21 @@ const AdminPageTabs = () => (
       {
         label: (
           <span>
+            <DashboardOutlined style={{ marginRight: 8 }} />
+            Dashboard
+          </span>
+        ),
+        key: "1",
+        children: <AdminCard />,
+      },
+      {
+        label: (
+          <span>
             <FaUserPlus style={{ marginRight: 8 }} />
             Create Admin
           </span>
         ),
-        key: "1",
+        key: "2",
         children: <CreateAdmin />,
       },
       {
@@ -26,7 +38,7 @@ const AdminPageTabs = () => (
             All Admin
           </span>
         ),
-        key: "2",
+        key: "3",
         children: <AlladminDetails />,
       },
     ]}

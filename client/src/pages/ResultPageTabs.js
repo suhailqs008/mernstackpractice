@@ -3,11 +3,10 @@ import { Tabs } from "antd";
 import CreateResult from "./CreateResult";
 import PrintResult from "./PrintResult";
 import { PrinterOutlined } from "@ant-design/icons";
-import { FaLaptopMedical } from "react-icons/fa";
 import { FaDatabase } from "react-icons/fa6";
+import { MdAssignmentAdd } from "react-icons/md";
+
 import AllStudentsResultPage from "./AllStudentsResultPage";
-import ChartVisulisation from "./ChartVisulisation";
-import { FaChartPie } from "react-icons/fa";
 
 const ResultPageTabs = () => (
   <Tabs
@@ -16,21 +15,11 @@ const ResultPageTabs = () => (
       {
         label: (
           <span>
-            <FaChartPie style={{ marginRight: 8 }} />
-            View
-          </span>
-        ),
-        key: "1",
-        children: <ChartVisulisation />,
-      },
-      {
-        label: (
-          <span>
-            <FaLaptopMedical style={{ marginRight: 8 }} />
+            <MdAssignmentAdd style={{ marginRight: 8 }} />
             Create Result
           </span>
         ),
-        key: "2",
+        key: "1",
         children: <CreateResult />,
       },
       {
@@ -40,7 +29,7 @@ const ResultPageTabs = () => (
             All Results
           </span>
         ),
-        key: "3",
+        key: "2",
         children: <AllStudentsResultPage />,
       },
 
@@ -51,7 +40,7 @@ const ResultPageTabs = () => (
             Print Result
           </span>
         ),
-        key: "4",
+        key: "3",
         children: <PrintResult />,
       },
     ]}

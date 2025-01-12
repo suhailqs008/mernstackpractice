@@ -103,6 +103,7 @@ const AdmissionSearch = () => {
       key: "parentName",
       fixed: "left",
     },
+
     {
       title: "Session",
       dataIndex: "session",
