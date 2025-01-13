@@ -128,6 +128,7 @@ const AdmissionsTable = () => {
       title: "Student Name",
       dataIndex: "studentName",
       key: "studentName",
+      fixed: "left",
     },
     {
       title: "Parent Name",
