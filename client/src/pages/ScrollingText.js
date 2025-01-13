@@ -3,15 +3,15 @@ import React from "react";
 const ScrollingText = ({ text }) => {
   return (
     <div
+      className="text-indigo-950 font-bold text-4xl"
       style={{
         textAlign: "center",
-
+        padding: "10px",
         display: "flex",
         overflow: "hidden",
         position: "relative",
-        fontSize: "30px",
+
         whiteSpace: "nowrap",
-        color: "blue",
       }}
     >
       <div

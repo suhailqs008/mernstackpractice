@@ -3,7 +3,7 @@ import { Carousel } from "antd";
 
 const CarouselSection = () => {
   const contentStyle = {
-    height: "450px",
+    height: "500px",
     color: "#fff",
     width: "100%",
     lineHeight: "200px",
@@ -11,6 +11,7 @@ const CarouselSection = () => {
     background: "#364d79",
     objectfit: "cover",
     overflow: "hidden",
+    aspectRatio: "1/1",
   };
 
   return (
@@ -18,29 +19,22 @@ const CarouselSection = () => {
       <div>
         <img
           style={contentStyle}
-          src="https://drskids.com/wp-content/uploads/2021/02/our-features.jpg"
-          alt=""
-        />
-      </div>
-      <div>
-        <img
-          style={contentStyle}
           src="https://haebix.com/wp-content/uploads/2023/08/13-scaled.jpg"
-          alt=""
+          alt="slider-image"
         />
       </div>
       <div>
         <img
           style={contentStyle}
           src="https://admin.mykinderbridge.com/uploads/sadasdasdasdasd_6fe78b6a90.jpg"
-          alt=""
+          alt="slider-image"
         />
       </div>
       <div>
         <img
           style={contentStyle}
-          src="https://img.freepik.com/free-photo/book-day-with-group-younf-childre_23-2148445696.jpg?t=st=1736002663~exp=1736006263~hmac=907d3a469272e5c072abe6e9b62ee3e2b440c36891bd2b7a58d978d81e6ff9cc&w=1060"
-          alt=""
+          src="https://media.istockphoto.com/id/186071319/photo/outdoor-recreation.jpg?s=612x612&w=0&k=20&c=d0JLXAuTU7_9AoeZhwl15SHZRqJscZ7sIRWRrv4a1pU="
+          alt="slider-image"
         />
       </div>
     </Carousel>

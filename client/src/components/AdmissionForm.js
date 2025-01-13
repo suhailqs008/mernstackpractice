@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Form, Input, Select, DatePicker, Spin } from "antd";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { LoadingOutlined } from "@ant-design/icons";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/admission-form.css";
-
-const { Option } = Select;
 const { TextArea } = Input;
 
 const AdmissionForm = () => {

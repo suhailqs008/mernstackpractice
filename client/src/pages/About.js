@@ -1,32 +1,29 @@
-import React from "react";
-import { Card, Typography } from "antd";
-
-const { Title, Paragraph } = Typography;
-
-const AboutUs = () => {
+("use client");
+export default function AboutUs() {
   return (
-    <>
-      <Card
-        id="about-section"
-        style={{ marginBottom: "20px", textAlign: "center" }}
-      >
-        <h1 level={2}>About Us</h1>
-        <div>
-          Welcome to [Your School Name], where education meets inspiration, and
-          every student’s potential is nurtured to flourish. Our institution
-          stands as a beacon of learning, growth, and holistic development,
-          committed to shaping the leaders and innovators of tomorrow. At [Your
-          School Name], we believe that education extends beyond textbooks and
-          classrooms. It’s about igniting curiosity, fostering creativity, and
-          building a foundation of strong values that empower students to excel
-          in every aspect of life. Through a well-rounded curriculum,
-          state-of-the-art facilities, and an experienced faculty, we strive to
-          create an environment where every child feels valued, inspired, and
-          ready to achieve their dreams.
-        </div>
-      </Card>
-    </>
+    <div
+      className="relative mb-10"
+      style={{
+        backgroundImage:
+          "url('https://cdn.create.vista.com/api/media/small/384446076/stock-photo-little-boy-sits-table-books-chooses-color-pencil-drawing-home')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        objectFit: "cover",
+        opacity: ".7",
+      }}
+    >
+      <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:py-32 text-center text-white">
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-5xl">
+          Empowering Minds, Shaping Futures
+        </h1>
+        <p className="mt-8 text-white text-base font-large sm:text-base">
+          Empowering young minds for a brighter future. At Apna School, we
+          inspire holistic growth, foster creativity, and nurture potential
+          through a world-class curriculum, state-of-the-art facilities, and
+          dedicated faculty. Together, we shape leaders ready to excel beyond
+          the classroom.
+        </p>
+      </div>
+    </div>
   );
-};
-
-export default AboutUs;
+}

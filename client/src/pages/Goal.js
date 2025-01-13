@@ -1,18 +1,16 @@
 import React from "react";
 import GoalCard from "./GoalCard";
-import "../styles/goal.css";
+
 const Goals = () => {
   return (
     <div
-      className="p-5 z-10  mt-4 bg-indigo-100 text-indigo-950 "
+      className="z-0  mt-4 bg-slate-100 text-indigo-950 "
       id="ourGoal-section"
     >
       <div className="sm:w-4/5 md:4/5 w-full m-auto">
-        <h1 className="md:text-3xl text-3xl font-semibold uppercase">
-          Our Goals
-        </h1>
+        <h1 className="md:text-2xl text-2xl font-semibold m-3">Our Goals</h1>
       </div>
-      <div className="cards border-5 border-green-400 flex flex-col justify-center items-center">
+      <div className="cards   flex flex-col justify-center items-center">
         <GoalCard
           title="Experienced Teachers"
           text="With extensive teaching experience, I create engaging and supportive

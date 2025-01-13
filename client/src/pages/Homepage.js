@@ -1,8 +1,6 @@
 import React from "react";
 import { Layout } from "antd";
-
 import "antd/dist/reset.css";
-
 import Navbar from "../components/Navbar";
 import AboutUs from "./About";
 import CarouselSection from "./CarouselSection";
@@ -12,7 +10,6 @@ import ScrollingText from "./ScrollingText";
 import ContactUs from "./ContactUs";
 import Teachers from "./Teachers";
 import Goals from "./Goal";
-import Home from "./Home";
 
 const { Content } = Layout;
 
@@ -20,13 +17,13 @@ function HomePage() {
   return (
     <Layout id="home-section">
       <Navbar />
-      <Content style={{ padding: "20px" }}>
+      <Content style={{ padding: "0px 20px" }}>
         <ScrollingText text="Admission Open 2024-25" />
-        <CarouselSection />
         <AboutUs />
-        <MediaGallery />
+        <CarouselSection />
         <Goals />
         <Teachers />
+        <MediaGallery />
       </Content>
       <ContactUs />
       <FooterSection />

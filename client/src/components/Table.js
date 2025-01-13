@@ -142,6 +142,7 @@ const Table = ({
           currentPage * pageSize
         )}
         pagination={{
+          showSizeChanger: false,
           pageSize,
           onChange: (page) => onPageChange(page),
           total: filteredStudents.length,

@@ -1,17 +1,17 @@
 import React from "react";
 import "../styles/receipt.css";
-
+import logo from "../assets/logo.jpg";
 const FeesReceiptModal = ({ selectedRow, indianTime, capitalizeFirstWord }) => {
   return (
     <div className="receipt-container">
       <div className="header">
         <div className="logo">
           <img
-            src="https://i.pinimg.com/474x/58/8d/6e/588d6ef34e23dd63d5edfc9a59645ff3.jpg"
+            src={logo}
             alt="Logo"
             style={{
-              width: "50px",
-              height: "50px",
+              width: "55px",
+              height: "55px",
               borderRadius: "50%",
               marginBottom: "10px",
             }}
@@ -25,11 +25,11 @@ const FeesReceiptModal = ({ selectedRow, indianTime, capitalizeFirstWord }) => {
         </div>
         <div className="receipt-label">
           <img
-            src="https://i.pinimg.com/474x/58/8d/6e/588d6ef34e23dd63d5edfc9a59645ff3.jpg"
+            src={logo}
             alt="Logo"
             style={{
-              width: "50px",
-              height: "50px",
+              width: "55px",
+              height: "55px",
               borderRadius: "50%",
               marginBottom: "10px",
             }}

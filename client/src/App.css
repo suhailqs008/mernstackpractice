@@ -1,7 +1,8 @@
 * {
-  font-family: "Bree Serif", serif;
+  font-family: "roboto serif";
   padding: 0;
   margin: 0;
+  font-weight: 500;
 }
 
 body {
@@ -10,10 +11,12 @@ body {
   font-family: Arial, sans-serif;
 }
 h1 {
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 30px;
 }
-
+.ant-layout-content {
+  padding-top: 0px;
+}
 .tabs-item {
   display: flex;
   justify-content: center;
@@ -49,6 +52,10 @@ h1 {
   margin: 30px auto;
   padding: 10px;
 }
+.ant-menu-title-content {
+  font-weight: 600;
+  font-size: 13px;
+}
 /* <----feepage---> */
 .fees-drawer {
   display: flex;
@@ -75,6 +82,25 @@ h1 {
 .buses-container img {
   width: 100%;
 }
+.gif-animation {
+  font-weight: 600;
+}
+.ant-card,
+.ant-card-body {
+  padding: 0;
+}
+.teacher-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+.teacher-div img {
+  width: 24%;
+}
+.teacher-div img:hover {
+  cursor: pointer;
+}
 
 @media screen and (min-width: 200px) and (max-width: 420px) {
   .result-generate-form {
@@ -93,6 +119,15 @@ h1 {
   .gif-animation {
     display: none;
   }
+  .teacher-div {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+    width: 100%;
+  }
+  .teacher-div img {
+    width: 100%;
+  }
 }
 @media screen and (min-width: 421px) and (max-width: 1024px) {
   .result-generate-form {
@@ -107,9 +142,18 @@ h1 {
     margin: auto;
   }
   .buses-container h1 {
-    font-size: 14px;
+    font-size: 16px;
   }
   .buses-container img {
+    width: 100%;
+  }
+  .teacher-div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+  }
+  .teacher-div img {
     width: 100%;
   }
 }

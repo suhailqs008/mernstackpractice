@@ -28,9 +28,9 @@ const MediaGallery = () => {
   };
 
   return (
-    <div className="z-10 bg-indigo-100 text-indigo-950 " id="gallery-section">
+    <div className="z-0  text-indigo-950 " id="gallery-section">
       <div className="heading text-center  flex flex-col">
-        <h1 className="md:text-3xl text-3xl font-semibold p-2">
+        <h1 className="md:text-2xl text-2xl font-semibold p-2 m-3">
           Media Gallery
         </h1>
       </div>

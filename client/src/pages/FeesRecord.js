@@ -3,12 +3,9 @@ import axios from "axios";
 import { Button, Modal, Popconfirm, message } from "antd";
 import { Spin } from "antd";
 import { useReactToPrint } from "react-to-print";
-
 import "../styles/receipt.css";
 import { DeleteOutlined, PrinterOutlined } from "@ant-design/icons";
-
 import Table from "../components/Table";
-
 import FeesReceiptModal from "./FeesReceiptModal";
 
 const FeesRecordPage = () => {
@@ -177,7 +174,7 @@ const FeesRecordPage = () => {
             cancelText="No"
           >
             <Button
-              style={{ fontSize: "12px", padding: "5px 10px" }}
+              style={{ fontSize: "16px", padding: "5px 10px" }}
               icon={<DeleteOutlined style={{ color: "red" }} />}
             />
           </Popconfirm>
@@ -192,7 +189,7 @@ const FeesRecordPage = () => {
       render: (_, record) => (
         <div style={{ display: "flex", gap: "8px" }}>
           <Button
-            style={{ fontSize: "12px", padding: "10px" }}
+            style={{ fontSize: "16px", padding: "10px" }}
             onClick={() => handleModalOpen(record)}
           >
             <PrinterOutlined />
@@ -205,7 +202,14 @@ const FeesRecordPage = () => {
   return (
     <div>
       <h1>Fees Submission Details</h1>
-      <h2 style={{ padding: "0px 10px", color: "#0073e6" }}>
+      <h2
+        style={{
+          fontSize: "16px",
+          fontWeight: "600",
+          padding: "0px 10px",
+          color: "#0073e6",
+        }}
+      >
         Total Amount: ₹{totalAmount.toFixed(2)}
       </h2>
       {loading ? (

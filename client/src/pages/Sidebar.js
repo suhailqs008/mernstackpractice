@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import {
-  DatabaseOutlined,
-  DesktopOutlined,
-  DownOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { DesktopOutlined, DownOutlined, UserOutlined } from "@ant-design/icons";
+import { FaSquarePhone } from "react-icons/fa6";
 import { FaRupeeSign } from "react-icons/fa";
 import { FaBus } from "react-icons/fa";
-
 import { FaBuilding } from "react-icons/fa";
 import { FaDatabase } from "react-icons/fa6";
 import { PiCurrencyInrBold } from "react-icons/pi";
@@ -46,6 +41,7 @@ const items = [
     getItem("Class-8", "/admin/class-8", <FaBuilding />),
   ]),
   getItem("Bus Record", "/admin/buses", <FaBus />),
+  getItem("Qyery request", "/admin/contact", <FaSquarePhone />),
   getItem("Manage", "/admin/user", <IoSettings />),
 ];
 
@@ -67,9 +63,10 @@ const Sidebar = () => {
       </Menu.Item>
     </Menu>
   );
+  const adminEmail = localStorage.getItem("admin") || [];
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: "100vh", fontWeight: "16px" }}>
       <Sider
         collapsible
         collapsed={collapsed}
@@ -99,7 +96,7 @@ const Sidebar = () => {
             }}
           >
             <span className="gif-animation" style={{ marginRight: "10px" }}>
-              Hello Admin
+              welcome: {adminEmail}
             </span>
             <div style={{ width: "50%" }}>
               <ScrollingText text="Welcome Admin" />

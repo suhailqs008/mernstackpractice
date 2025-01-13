@@ -144,7 +144,7 @@ const ClassTable = ({ classId, pageSize = 10, url }) => {
       <div className="table-header">
         {filteredStudents.length > 0 ? (
           <p>
-            Showing {startRecord} to {endRecord} out of
+            Showing {startRecord} to {endRecord} out of{" "}
             {filteredStudents.length} students
           </p>
         ) : (
@@ -215,6 +215,8 @@ const ClassTable = ({ classId, pageSize = 10, url }) => {
           }))}
           pagination={{
             current: currentPage,
+            showSizeChanger: false,
+
             pageSize: pageSize,
             total: filteredStudents.length,
             onChange: (page) => setCurrentPage(page),

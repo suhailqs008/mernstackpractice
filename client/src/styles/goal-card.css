@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #001529ec;
+
   width: 100%;
 }
 
@@ -13,12 +13,23 @@
 }
 .button-div {
   margin: auto;
-  width: 35%;
+  width: 30%;
   display: flex;
   justify-content: center;
 }
 .button-div button {
-  width: 100%;
+  width: 70%;
+  color: black;
+  background-color: whitesmoke;
+  font-weight: 600;
+  padding: 8px 15px;
+  text-align: center;
+}
+.button-div button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
 }
 .image-div {
   width: 50%;
@@ -31,8 +42,8 @@
 }
 @media screen and (min-width: 200px) and (max-width: 420px) {
   .button-div {
-    margin: auto;
     width: 100%;
+    margin: auto;
     display: flex;
     justify-content: center;
   }
@@ -54,9 +65,25 @@
 }
 @media screen and (min-width: 421px) and (max-width: 1024px) {
   .button-div {
-    margin: auto;
-    width: 100%;
+    width: 60%;
+    margin: 30px auto;
     display: flex;
     justify-content: center;
+  }
+  .details-card {
+    width: 100%;
+    align-items: center;
+    padding: 20px;
+    text-align: justify;
+    height: 300px;
+  }
+  .image-div {
+    width: 100%;
+  }
+
+  .image-div img {
+    height: 350px;
+    object-fit: fill;
+    width: 100%;
   }
 }

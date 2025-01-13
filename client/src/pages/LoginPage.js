@@ -19,6 +19,7 @@ const LoginPage = () => {
       });
 
       localStorage.setItem("isLoggedIn", true);
+      localStorage.setItem("admin", email);
       localStorage.setItem("authToken", response.data.token);
 
       navigate("/admin");

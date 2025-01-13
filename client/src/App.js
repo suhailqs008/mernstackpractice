@@ -24,6 +24,7 @@ import Buses from "./pages/Buses";
 import ClassEight from "./pages/Classes/ClassEight";
 import ManageAdmin from "./pages/ManageAdmin";
 import { ToastContainer } from "react-toastify";
+import ContactRequest from "./pages/ContactRequest";
 
 const PrivateRoute = ({ element }) => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
@@ -57,6 +58,7 @@ function App() {
             <Route path="fees" element={<FeesPage />} />
             <Route path="buses" element={<Buses />} />
             <Route path="result" element={<ResultPage />} />
+            <Route path="contact" element={<ContactRequest />} />
             <Route path="user" element={<ManageAdmin />} />
           </Route>
         </Routes>
