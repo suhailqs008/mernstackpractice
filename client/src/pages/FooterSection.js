@@ -6,6 +6,8 @@ import {
   GithubOutlined,
   MailOutlined,
 } from "@ant-design/icons";
+import logo from "../assets/logo.jpg";
+import "../styles/footer.css";
 
 const { Footer } = Layout;
 
@@ -16,7 +18,7 @@ const FooterSection = () => {
         <Col xs={24} sm={12} md={6}>
           <div style={{ textAlign: "center" }}>
             <img
-              src="https://i.pinimg.com/474x/58/8d/6e/588d6ef34e23dd63d5edfc9a59645ff3.jpg"
+              src={logo}
               alt="Logo"
               style={{
                 width: "50px",
@@ -28,33 +30,31 @@ const FooterSection = () => {
             <p>© 2024. All Rights Reserved</p>
           </div>
           <div
+            className="social-icons"
             style={{ display: "flex", justifyContent: "center", gap: "10px" }}
           >
-            <TwitterOutlined style={{ fontSize: "30px", cursor: "pointer" }} />
-            <YoutubeOutlined style={{ fontSize: "30px", cursor: "pointer" }} />
-            <GithubOutlined style={{ fontSize: "30px", cursor: "pointer" }} />
+            <TwitterOutlined className="icon" />
+            <YoutubeOutlined className="icon" />
+            <GithubOutlined className="icon" />
           </div>
         </Col>
 
-        <Col xs={24} sm={12} md={6} style={{ cursor: "pointer" }}>
-          <h4 style={{ color: "#fff" }}>Company</h4>
-          <p>About us</p>
-
-          <p>Contact us </p>
-
-          <p>Testimonials</p>
-        </Col>
-
-        <Col xs={24} sm={12} md={6} style={{ cursor: "pointer" }}>
-          <h4 style={{ color: "#fff" }}>Support</h4>
-          <p>Help Center</p>
-          <p>Terms of Service</p>
-
-          <p>Privacy Policy</p>
+        <Col xs={24} sm={12} md={6}>
+          <h4 className="footer-heading">Company</h4>
+          <p className="footer-item">About us</p>
+          <p className="footer-item">Contact us</p>
+          <p className="footer-item">Testimonials</p>
         </Col>
 
         <Col xs={24} sm={12} md={6}>
-          <h4 style={{ color: "#fff" }}>Stay up to date</h4>
+          <h4 className="footer-heading">Support</h4>
+          <p className="footer-item">Help Center</p>
+          <p className="footer-item">Terms of Service</p>
+          <p className="footer-item">Privacy Policy</p>
+        </Col>
+
+        <Col xs={24} sm={12} md={6}>
+          <h4 className="footer-heading">Stay up to date</h4>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <Input
               placeholder="Your email address"

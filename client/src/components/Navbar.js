@@ -8,7 +8,6 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
-
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button, Dropdown } from "antd";
 import logo from "../assets/logo.jpg";
@@ -111,7 +110,7 @@ export default function Navbar() {
               >
                 <MenuItem className="text-center">
                   <a
-                    href="#"
+                    href="/login"
                     className="block px-2 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                   >
                     School Login

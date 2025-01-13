@@ -2,6 +2,7 @@
 export default function AboutUs() {
   return (
     <div
+      id="about-section"
       className="relative mb-10"
       style={{
         backgroundImage:

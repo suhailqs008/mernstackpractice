@@ -1,0 +1,30 @@
+.social-icons .icon {
+  font-size: 30px;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.social-icons .icon:hover {
+  color: #1da1f2;
+}
+
+.footer-item {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: #fff;
+}
+
+.footer-item:hover {
+  color: #1da1f2;
+}
+
+.footer-heading {
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.footer-heading:hover {
+  color: #1da1f2;
+  cursor: pointer;
+}

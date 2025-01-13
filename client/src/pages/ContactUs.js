@@ -24,7 +24,6 @@ const ContactUs = () => {
       message.error("Unable to submit. Please try again later!");
     }
   };
-  const [contact, setContact] = useState([]);
 
   return (
     <div className="bg-slate-100">
