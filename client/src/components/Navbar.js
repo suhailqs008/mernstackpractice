@@ -11,10 +11,11 @@ import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button, Dropdown } from "antd";
 import logo from "../assets/logo.jpg";
+
 const navigation = [
   { name: "About Us", href: "about-section" },
   { name: "Gallery", href: "gallery-section" },
-  { name: " Our Goals", href: "ourGoal-section" },
+  { name: "Our Goals", href: "ourGoal-section" },
   { name: "Our Teachers", href: "teacher-section" },
   { name: "Contact", href: "instructor-section" },
 ];
@@ -39,6 +40,13 @@ export default function Navbar() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <Disclosure as="nav" className="bg-gray-950 sticky top-0 z-50">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -58,11 +66,15 @@ export default function Navbar() {
             </DisclosureButton>
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="shrink-0 items-center hidden sm:flex md:flex">
+            <div
+              className="shrink-0 items-center hidden sm:flex md:flex"
+              onClick={scrollToTop}
+              style={{ cursor: "pointer" }}
+            >
               <img
                 alt="Your Company"
                 src={logo}
-                className="h-10 w-auto rounded"
+                className="h-11 w-auto rounded"
               />
             </div>
           </div>
@@ -111,7 +123,7 @@ export default function Navbar() {
                 <MenuItem className="text-center">
                   <a
                     href="/login"
-                    className="block px-2 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
+                    className="block px-2 py-2 font-semibold text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                   >
                     School Login
                   </a>
