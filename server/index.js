@@ -6,7 +6,7 @@ const admissionRoutes = require("./routes/admissionRoutes");
 const fessRoutes = require("./routes/feesRoutes");
 const resultRoutes = require("./routes/resultRoutes");
 const adminRoutes = require("./routes/adminRoute");
-
+const contactRoutes = require("./routes/contactRoute");
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 app.use("/api", admissionRoutes);
 app.use("/api", fessRoutes);
 app.use("/api", resultRoutes);
+app.use("/api", contactRoutes);
 app.use("/api/admin", adminRoutes);
 
 app.listen(PORT, async () => {
