@@ -1,10 +1,25 @@
-.social-icons .icon {
-  font-size: 30px;
+.social-icons,
+.twitter-icon,
+.youtube-icon,
+.whatsapp-icon {
+  font-size: 25px;
   cursor: pointer;
-  color: #fff;
+
   transition: color 0.3s ease;
 }
-
+.whatsapp-icon {
+  color: #25d366;
+}
+.youtube-icon {
+  color: #ff0000;
+}
+.twitter-icon {
+  color: #1da1f2;
+}
+.instagram-icon {
+  background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+  border-radius: 2px;
+}
 .social-icons .icon:hover {
   color: #1da1f2;
 }

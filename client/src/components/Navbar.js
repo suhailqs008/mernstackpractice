@@ -10,7 +10,7 @@ import {
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button, Dropdown } from "antd";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/schoollogo.png";
 
 const navigation = [
   { name: "About Us", href: "about-section" },
@@ -74,7 +74,7 @@ export default function Navbar() {
               <img
                 alt="Your Company"
                 src={logo}
-                className="h-11 w-auto rounded"
+                className="h-11 w-auto rounded-full"
               />
             </div>
           </div>
@@ -87,7 +87,7 @@ export default function Navbar() {
                     onClick={() => handleScroll(item.href)}
                     className={classNames(
                       "text-gray-300 hover:bg-gray-700 hover:text-white",
-                      "rounded-md px-3 py-2 text- font-medium"
+                      "rounded-md px-3 py-2 text-[15px] font-light"
                     )}
                   >
                     {item.name}

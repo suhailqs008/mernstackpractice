@@ -1,6 +1,8 @@
 import React from "react";
 import { Carousel } from "antd";
-
+import carausal1 from "../assets/carausal-1.jpg";
+import carausal2 from "../assets/carausal-2.jpg";
+import carausal3 from "../assets/carausal-3.jpg";
 const CarouselSection = () => {
   const contentStyle = {
     height: "500px",
@@ -15,27 +17,15 @@ const CarouselSection = () => {
   };
 
   return (
-    <Carousel autoplay autoplaySpeed={2000}>
+    <Carousel autoplay arrows={true} autoplaySpeed={2000}>
       <div>
-        <img
-          style={contentStyle}
-          src="https://haebix.com/wp-content/uploads/2023/08/13-scaled.jpg"
-          alt="slider-image"
-        />
+        <img style={contentStyle} src={carausal1} alt="slider-image" />
       </div>
       <div>
-        <img
-          style={contentStyle}
-          src="https://admin.mykinderbridge.com/uploads/sadasdasdasdasd_6fe78b6a90.jpg"
-          alt="slider-image"
-        />
+        <img style={contentStyle} src={carausal2} alt="slider-image" />
       </div>
       <div>
-        <img
-          style={contentStyle}
-          src="https://media.istockphoto.com/id/186071319/photo/outdoor-recreation.jpg?s=612x612&w=0&k=20&c=d0JLXAuTU7_9AoeZhwl15SHZRqJscZ7sIRWRrv4a1pU="
-          alt="slider-image"
-        />
+        <img style={contentStyle} src={carausal3} alt="slider-image" />
       </div>
     </Carousel>
   );

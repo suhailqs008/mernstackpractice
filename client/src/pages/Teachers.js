@@ -1,12 +1,10 @@
 import React from "react";
-
+import teacher1 from "../assets/teacher1.jpg";
+import teacher2 from "../assets/teacher2.jpg";
+import teacher3 from "../assets/teacher3.jpg";
+import teacher4 from "../assets/teacher4.jpg";
 const Teachers = () => {
-  const images = [
-    "https://www.teacheracademy.eu/wp-content/uploads/2021/10/successful-teacher-1-608x405.jpg",
-    "https://degrees.snu.edu/hs-fs/hubfs/AdobeStock_518657595.jpeg",
-    "https://vawsum.com/wp-content/uploads/2019/07/pexels-max-fischer-5212345-1024x683.jpg",
-    "https://rockwoodsinternationalschool.com/auth/uploads/pages/OUBaiDW63S7jkvkzOPyDqKpMb0HtUWED.png",
-  ];
+  const images = [teacher1, teacher2, teacher3, teacher4];
 
   return (
     <div
@@ -17,9 +15,13 @@ const Teachers = () => {
       <h2 className="md:text-2xl text-2xl font-semibold text-center text-indigo-950">
         Our Teachers
       </h2>
-      <div className="teacher-div">
+      <div className="teacher-div ">
         {images.map((src, index) => (
-          <img src={src} alt={index} />
+          <img
+            className="hover:cursor-pointer hover:opacity-75"
+            src={src}
+            alt={index}
+          />
         ))}
       </div>
     </div>

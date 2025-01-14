@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
+
 import "antd/dist/reset.css";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const url = process.env.REACT_APP_LOGIN_ADMIN_URL;
+  const [form] = Form.useForm();
+
   const handleLogin = async (values) => {
     const { email, password } = values;
     setLoading(true);
@@ -21,11 +25,12 @@ const LoginPage = () => {
       localStorage.setItem("isLoggedIn", true);
       localStorage.setItem("admin", email);
       localStorage.setItem("authToken", response.data.token);
-
+      toast.success("Login Success!");
       navigate("/admin");
     } catch (error) {
       setLoading(false);
-      alert(error.response?.data?.message || "Login failed");
+      toast.error(error.response?.data?.message || "Login failed");
+      form.resetFields();
     }
   };
 
@@ -50,6 +55,7 @@ const LoginPage = () => {
       >
         <h2 style={{ textAlign: "center" }}>Login</h2>
         <Form
+          form={form}
           name="loginForm"
           layout="vertical"
           onFinish={handleLogin}

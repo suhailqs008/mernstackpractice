@@ -17,7 +17,7 @@ function HomePage() {
   return (
     <Layout id="home-section">
       <Navbar />
-      <Content style={{ padding: "0px 20px" }}>
+      <Content style={{ padding: "0px 30px" }}>
         <ScrollingText text="Admission Open 2024-25" />
         <AboutUs />
         <CarouselSection />

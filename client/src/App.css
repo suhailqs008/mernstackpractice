@@ -101,6 +101,18 @@ h1 {
 .teacher-div img:hover {
   cursor: pointer;
 }
+.gallery-div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.contact-us-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: auto;
+  display: "flex";
+}
 
 @media screen and (min-width: 200px) and (max-width: 420px) {
   .result-generate-form {
@@ -128,6 +140,14 @@ h1 {
   .teacher-div img {
     width: 100%;
   }
+  .gallery-div {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+  }
+  .contact-us-container {
+    width: 85%;
+  }
 }
 @media screen and (min-width: 421px) and (max-width: 1024px) {
   .result-generate-form {
@@ -154,6 +174,19 @@ h1 {
     width: 100%;
   }
   .teacher-div img {
+    width: 100%;
+  }
+  .gallery-div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .contact-us-container {
+    display: flex;
+    flex-direction: column;
+    width: 93%;
+  }
+  .contact-us-container img {
     width: 100%;
   }
 }

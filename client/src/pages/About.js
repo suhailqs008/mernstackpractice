@@ -9,11 +9,11 @@ export default function AboutUs() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           objectFit: "cover",
-          opacity: 0.6,
+          opacity: 0.9,
         }}
       ></div>
 
-      <div className="relative mx-auto max-w-2xl py-16 sm:py-24 lg:py-32 text-center text-indigo-950">
+      <div className="relative mx-auto max-w-2xl py-16 sm:py-24 lg:py-32 text-center text-zinc-100">
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
           Empowering Minds, Shaping Futures
         </h1>

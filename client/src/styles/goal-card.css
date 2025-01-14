@@ -40,18 +40,21 @@
   object-fit: fill;
   width: 100%;
 }
+
 @media screen and (min-width: 200px) and (max-width: 420px) {
   .button-div {
     width: 100%;
     margin: auto;
     display: flex;
     justify-content: center;
+    margin-bottom: 12px;
   }
 
   .details-card {
     width: 100%;
     align-items: center;
-    padding: 40px;
+    text-align: justify;
+    padding: 10px;
   }
   .image-div {
     width: 100%;

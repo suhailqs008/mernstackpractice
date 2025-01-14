@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import { LoadingOutlined } from "@ant-design/icons";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/admission-form.css";
+import admissionOpen from "../assets/admi-form.jpg";
 const { TextArea } = Input;
-
 const AdmissionForm = () => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
@@ -283,10 +283,8 @@ const AdmissionForm = () => {
       <div className="left-image-container">
         <img
           className="admissionForm-image"
-          src={
-            "https://www.shutterstock.com/image-vector/admission-open-banner-social-media-600nw-2227399121.jpg"
-          }
-          alt="admission"
+          src={admissionOpen}
+          alt="admission-form"
         />
       </div>
     </div>

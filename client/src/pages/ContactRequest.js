@@ -62,6 +62,7 @@ const ContactRequest = () => {
 
   return (
     <div>
+      <h1>Contact Request Table</h1>
       {loading ? (
         <div style={{ textAlign: "center", marginTop: "30px" }}>
           <Spin size="large" />

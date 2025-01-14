@@ -1,12 +1,13 @@
 import React from "react";
-import { Layout, Row, Col, Input, Button } from "antd";
+import { Layout, Row, Col } from "antd";
 import {
   TwitterOutlined,
   YoutubeOutlined,
-  GithubOutlined,
-  MailOutlined,
+  WhatsAppOutlined,
+  InstagramOutlined,
 } from "@ant-design/icons";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/schoollogo.png";
+
 import "../styles/footer.css";
 
 const { Footer } = Layout;
@@ -23,19 +24,49 @@ const FooterSection = () => {
               style={{
                 width: "50px",
                 height: "50px",
+                cursor: "pointer",
                 borderRadius: "50%",
                 marginBottom: "10px",
               }}
             />
-            <p>© 2024. All Rights Reserved</p>
+            <p>© Apna School 2025. All Rights Reserved</p>
           </div>
           <div
             className="social-icons"
             style={{ display: "flex", justifyContent: "center", gap: "10px" }}
           >
-            <TwitterOutlined className="icon" />
-            <YoutubeOutlined className="icon" />
-            <GithubOutlined className="icon" />
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <InstagramOutlined className="instagram-icon" />
+            </a>
+            <a
+              href="https://www.twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter"
+            >
+              <TwitterOutlined className="twitter-icon" />
+            </a>
+            <a
+              href="https://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <YoutubeOutlined className="youtube-icon" />
+            </a>
+            <a
+              href="https://wa.me/yourNumberHere"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <WhatsAppOutlined className="whatsapp-icon" />
+            </a>
           </div>
         </Col>
 
@@ -54,22 +85,30 @@ const FooterSection = () => {
         </Col>
 
         <Col xs={24} sm={12} md={6}>
-          <h4 className="footer-heading">Stay up to date</h4>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <Input
-              placeholder="Your email address"
-              style={{
-                borderRadius: "5px",
-                borderColor: "#0cf",
-                color: "#000",
-              }}
-            />
-            <Button
-              type="primary"
-              shape="circle"
-              icon={<MailOutlined />}
-              style={{ backgroundColor: "#4CAF50", borderColor: "#4CAF50" }}
-            />
+          <h4 className="footer-heading">Our Location</h4>
+          <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+            <div style={{ textAlign: "center", borderRadius: "50px" }}>
+              <div
+                style={{
+                  width: "80%",
+                  maxWidth: "300px",
+                  margin: "0 auto",
+                }}
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d56549.823802942985!2d79.90350984487414!3d27.644208146389996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m5!1s0x399fade6237f3951%3A0x21113f5078813a11!2sShahabad%2C%20Hardoi%2C%20Uttar%20Pradesh!3m2!1d27.6441382!2d79.9447096!4m0!5e0!3m2!1sen!2sin!4v1736825933771!5m2!1sen!2sin"
+                  width="100%"
+                  height="50"
+                  style={{ border: "0" }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+              <p className="footer-item" style={{ marginTop: "10px" }}>
+                Visit us at: Shahabad, Hardoi, Uttar Pradesh
+              </p>
+            </div>
           </div>
         </Col>
       </Row>

@@ -26,30 +26,16 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="bg-slate-100">
+    <div className="bg-slate-100 ">
       <h1
         id="instructor-section"
-        className="md:text-2xl text-2xl font-semibold text-indigo-950 m-3"
+        className="md:text-2xl text-2xl font-semibold text-indigo-950 m-3 mt-5"
       >
         Contact Us
       </h1>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          width: "90%",
-          margin: "auto",
-          padding: "20px",
-          gap: "0px",
-          background: "#f9f9f9",
-        }}
-      >
-        <div>
-          <img
-            style={{ height: "100%", width: "100%" }}
-            src={contactup}
-            alt="contact"
-          />
+      <div className="contact-us-container">
+        <div className="image-div">
+          <img style={{ height: "100%" }} src={contactup} alt="contact" />
         </div>
         <div
           style={{

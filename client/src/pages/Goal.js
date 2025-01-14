@@ -1,6 +1,7 @@
 import React from "react";
 import GoalCard from "./GoalCard";
-
+import tech1 from "../assets/goal-tech1.jpg";
+import tech2 from "../assets/goaltech2.jpg";
 const Goals = () => {
   return (
     <div
@@ -20,14 +21,14 @@ const Goals = () => {
           thinking, and lifelong learning, helping every student reach their
           full potential."
           button="Safety Measures"
-          image="https://img.freepik.com/free-photo/young-teacher-helping-little-girl-class_23-2148633378.jpg?t=st=1736422153~exp=1736425753~hmac=65ee4c5bf261b1da0d5f34176715705a6a0fc1144d008d84c6441dec9be92d63&w=740"
+          image={tech1}
           alternateCard="flex-col md:flex-row"
         />
         <GoalCard
           title="Smart Courses"
           text="With extensive teaching experience, I specialize in delivering smart courses that combine innovative methods and personalized instruction. My approach creates engaging and supportive environments, catering to diverse learning styles. I aim to inspire curiosity, critical thinking, and lifelong learning, helping students achieve their goals effectively and confidently."
           button="Apply Today"
-          image="https://img.freepik.com/free-photo/students-doing-homework-park_53876-42624.jpg?t=st=1736422208~exp=1736425808~hmac=6b124c3f18e46719cc41ebd1140446f81b3f4d0447d6e424a1c40a2a6eea97de&w=740"
+          image={tech2}
           alternateCard="md:flex-row-reverse flex-col"
         />
       </div>
