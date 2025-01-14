@@ -66,9 +66,6 @@ const AlladminDetails = () => {
       width: 100,
       render: (_, record) => (
         <div style={{ display: "flex", gap: "8px" }}>
-          <Button>
-            <EditOutlined style={{ color: "green" }} />
-          </Button>
           <Popconfirm
             title="Are you sure to delete this admin?"
             onConfirm={() => handleDelete(record.key)}
@@ -103,6 +100,7 @@ const AlladminDetails = () => {
           currentPage={currentPage}
           pageSize={pageSize}
           totalRecord={admins.length}
+          isVisble={false}
         />
       )}
     </div>

@@ -164,6 +164,7 @@ const AllStudentsResultPage = () => {
     {
       title: "Hindi",
       key: "hindi",
+      width: 80,
       dataIndex: "hindi",
       render: (text, record) => record.marks?.hindi || "N/A",
     },
@@ -263,6 +264,7 @@ const AllStudentsResultPage = () => {
         placement="right"
         onClose={() => setDrawerVisible(false)}
         visible={drawerVisible}
+        destroyOnClose
       >
         <Form
           onFinish={handleSave}

@@ -1,7 +1,7 @@
 import backgroundImage from "../assets/bg.jpg";
 export default function AboutUs() {
   return (
-    <div id="about-section" className="relative mb-10">
+    <div id="about-section" className="relative mb-5">
       <div
         className="absolute inset-0 z-0"
         style={{

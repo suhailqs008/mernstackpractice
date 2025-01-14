@@ -60,7 +60,7 @@ const FooterSection = () => {
               <YoutubeOutlined className="youtube-icon" />
             </a>
             <a
-              href="https://wa.me/yourNumberHere"
+              href="https://wa.me/919598125005"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"

@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/report-card.css";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/schoollogo.png";
 
 const ReportCard = ({ selectedRow, indianTime }) => {
   const totalMarks = Object.values(selectedRow.marks || {}).reduce(

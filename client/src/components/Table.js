@@ -8,6 +8,7 @@ const Table = ({
   onPageChange,
   pageSize,
   currentPage,
+  isVisble = true,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSession, setSelectedSession] = useState("");
@@ -64,76 +65,91 @@ const Table = ({
 
   return (
     <div>
-      <div className="table-header">
-        <p>
-          Showing {startRecord} to {endRecord} out of {filteredStudents.length}{" "}
-          students
-        </p>
-        Total {filteredStudents.length} students
-      </div>
-      <div className="class-table-filters-search">
-        <div style={{ display: "flex", flexDirection: "column", width: "30%" }}>
-          <label
-            htmlFor="search-input"
-            style={{ marginBottom: "8px", fontWeight: "bold" }}
-          >
-            Search by Student Name
-          </label>
-          <Input
-            id="search-input"
-            placeholder="Search by Student Name"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            style={{ marginBottom: 16 }}
-          />
+      {isVisble ? (
+        <div className="table-header">
+          <p>
+            Showing {startRecord} to {endRecord} out of{" "}
+            {filteredStudents.length} students
+          </p>
+          Total {filteredStudents.length} students
         </div>
+      ) : (
+        ""
+      )}
+      {isVisble ? (
+        <div className="class-table-filters-search">
+          <div
+            style={{ display: "flex", flexDirection: "column", width: "30%" }}
+          >
+            <label
+              htmlFor="search-input"
+              style={{ marginBottom: "8px", fontWeight: "bold" }}
+            >
+              Search by Student Name
+            </label>
+            <Input
+              id="search-input"
+              placeholder="Search by Student Name"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              style={{ marginBottom: 16 }}
+            />
+          </div>
 
-        <div style={{ display: "flex", flexDirection: "column", width: "30%" }}>
-          <label
-            htmlFor="session-select"
-            style={{ marginBottom: "8px", fontWeight: "bold" }}
+          <div
+            style={{ display: "flex", flexDirection: "column", width: "30%" }}
           >
-            Filter by Session
-          </label>
-          <Select
-            id="session-select"
-            placeholder="Filter by Session"
-            value={selectedSession}
-            onChange={handleSessionFilterChange}
-            style={{ marginBottom: 16 }}
-          >
-            <Select.Option value="">All Sessions</Select.Option>
-            {sessionOptions.map((session) => (
-              <Select.Option key={session} value={session}>
-                {session}
-              </Select.Option>
-            ))}
-          </Select>
-        </div>
+            <label
+              htmlFor="session-select"
+              style={{ marginBottom: "8px", fontWeight: "bold" }}
+            >
+              Filter by Session
+            </label>
+            <Select
+              id="session-select"
+              placeholder="Filter by Session"
+              value={selectedSession}
+              onChange={handleSessionFilterChange}
+              style={{ marginBottom: 16 }}
+            >
+              <Select.Option value="">All Sessions</Select.Option>
+              {sessionOptions.map((session) => (
+                <Select.Option key={session} value={session}>
+                  {session}
+                </Select.Option>
+              ))}
+            </Select>
+          </div>
 
-        <div style={{ display: "flex", flexDirection: "column", width: "30%" }}>
-          <label
-            htmlFor="class-select"
-            style={{ marginBottom: "8px", fontWeight: "bold" }}
+          <div
+            style={{ display: "flex", flexDirection: "column", width: "30%" }}
           >
-            Filter by Class
-          </label>
-          <Select
-            id="class-select"
-            placeholder="Filter by Class"
-            value={selectedClass}
-            onChange={handleClassFilterChange}
-            style={{ marginBottom: 16 }}
-          >
-            <Select.Option value="">All Classes</Select.Option>
-            {classOptions.map((cls) => (
-              <Select.Option key={cls} value={cls}>
-                {cls}
-              </Select.Option>
-            ))}
-          </Select>
+            <label
+              htmlFor="class-select"
+              style={{ marginBottom: "8px", fontWeight: "bold" }}
+            >
+              Filter by Class
+            </label>
+            <Select
+              id="class-select"
+              placeholder="Filter by Class"
+              value={selectedClass}
+              onChange={handleClassFilterChange}
+              style={{ marginBottom: 16 }}
+            >
+              <Select.Option value="">All Classes</Select.Option>
+              {classOptions.map((cls) => (
+                <Select.Option key={cls} value={cls}>
+                  {cls}
+                </Select.Option>
+              ))}
+            </Select>
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
+
       <AntdTable
         className="custom-table"
         columns={columns}

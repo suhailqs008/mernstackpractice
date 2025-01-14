@@ -24,6 +24,7 @@ const AdmissionsTable = () => {
   const [editingData, setEditingData] = useState({});
   const [editingRowKey, setEditingRowKey] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [form] = Form.useForm();
   const pageSize = 10;
   const url = process.env.REACT_APP_ADMISSION_URL;
 
@@ -67,13 +68,24 @@ const AdmissionsTable = () => {
   }, []);
 
   const handleEdit = (record) => {
+    form.resetFields();
     setEditingRowKey(record.key);
-    setEditingData({
+    const formattedData = {
       ...record,
       dateOfBirth: moment(record.dateOfBirth),
       admissionDate: moment(record.admissionDate),
-    });
+    };
+    setEditingData(formattedData);
+    form.setFieldsValue(formattedData);
+
     setDrawerVisible(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setDrawerVisible(false);
+    setEditingRowKey(null);
+    setEditingData({});
+    form.resetFields();
   };
 
   const handleSave = async () => {
@@ -238,8 +250,9 @@ const AdmissionsTable = () => {
       <Drawer
         title="Edit Record"
         placement="right"
-        onClose={() => setDrawerVisible(false)}
+        onClose={handleCloseDrawer}
         visible={drawerVisible}
+        destroyOnClose
       >
         <Form
           onFinish={handleSave}

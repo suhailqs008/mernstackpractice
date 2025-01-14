@@ -54,5 +54,15 @@ router.get("/all", async (req, res) => {
     res.status(500).json({ message: "Error fetching admins.", error });
   }
 });
+router.delete("/all/:id", async (req, res) => {
+  try {
+    const deletedAdmimn = await Admin.findByIdAndDelete(req.params.id);
+    if (!deletedAdmimn)
+      return res.status(404).json({ message: "Admin details not found" });
+    res.status(200).json({ message: "Admin Record deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete the admin Record" });
+  }
+});
 
 module.exports = router;

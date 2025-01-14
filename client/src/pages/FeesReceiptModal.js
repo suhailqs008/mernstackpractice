@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/receipt.css";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/schoollogo.png";
+
 const FeesReceiptModal = ({ selectedRow, indianTime, capitalizeFirstWord }) => {
   return (
     <div className="receipt-container">
