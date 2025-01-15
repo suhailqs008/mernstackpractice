@@ -18,6 +18,8 @@ const Teachers = () => {
       <div className="teacher-div ">
         {images.map((src, index) => (
           <img
+            data-aos="flip-left"
+            data-aos-duration="3000"
             className="hover:cursor-pointer hover:opacity-75"
             src={src}
             alt={index}

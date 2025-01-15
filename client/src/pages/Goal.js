@@ -7,6 +7,9 @@ const Goals = () => {
     <div
       className="z-0  mt-4 bg-slate-100 text-indigo-950 "
       id="ourGoal-section"
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-bottom"
+      data-aos-duration="3000"
     >
       <div className="sm:w-4/5 md:4/5 w-full m-auto">
         <h1 className="md:text-2xl text-2xl font-semibold m-3">Our Goals</h1>

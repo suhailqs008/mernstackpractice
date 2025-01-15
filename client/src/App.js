@@ -25,7 +25,10 @@ import ClassEight from "./pages/Classes/ClassEight";
 import ManageAdmin from "./pages/ManageAdmin";
 import { ToastContainer } from "react-toastify";
 import ContactRequest from "./pages/ContactRequest";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
+AOS.init();
 const PrivateRoute = ({ element }) => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const authToken = localStorage.getItem("authToken");

@@ -26,7 +26,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="bg-slate-100 ">
+    <div className="bg-slate-100 " data-aos="fade-up" data-aos-duration="3000">
       <h1
         id="instructor-section"
         className="md:text-2xl text-2xl font-semibold text-indigo-950 m-3 mt-5"
