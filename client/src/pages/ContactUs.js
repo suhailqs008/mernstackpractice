@@ -35,7 +35,12 @@ const ContactUs = () => {
       </h1>
       <div className="contact-us-container">
         <div className="image-div">
-          <img style={{ height: "100%" }} src={contactup} alt="contact" />
+          <img
+            className="hover:cursor-pointer hover:opacity-75"
+            style={{ height: "100%" }}
+            src={contactup}
+            alt="contact"
+          />
         </div>
         <div
           style={{

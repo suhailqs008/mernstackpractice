@@ -48,6 +48,7 @@ const MediaGallery = () => {
           <img
             key={index}
             src={item.image}
+            className="hover:cursor-pointer hover:opacity-75"
             alt={`Gallery Image ${index + 1}`}
           />
         ))}

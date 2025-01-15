@@ -19,7 +19,11 @@ const GoalCard = ({ alternateCard, title, text, image, button }) => {
       </div>
 
       <div className="image-div">
-        <img src={imagePath} alt="Students studying" />
+        <img
+          className="hover:cursor-pointer hover:opacity-75"
+          src={imagePath}
+          alt="Students studying"
+        />
       </div>
     </div>
   );
