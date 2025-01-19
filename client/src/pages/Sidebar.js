@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { DesktopOutlined, DownOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  BankOutlined,
+  DesktopOutlined,
+  DownOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { FaSquarePhone } from "react-icons/fa6";
 import { FaRupeeSign } from "react-icons/fa";
 import { FaBus } from "react-icons/fa";
 import { FaBuilding } from "react-icons/fa";
 import { FaDatabase } from "react-icons/fa6";
-import { PiCurrencyInrBold } from "react-icons/pi";
 import { Button, Dropdown, Layout, Menu, theme } from "antd";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import { SiGoogleforms } from "react-icons/si";
@@ -27,7 +31,7 @@ function getItem(label, key, icon, children) {
 const items = [
   getItem("Admission Form", "/admin/admissionform", <SiGoogleforms />),
   getItem("Admission Data", "/admin/admissiondata", <FaDatabase />),
-  getItem("Fees", "/admin/fees", <PiCurrencyInrBold />),
+  getItem("Fees", "/admin/fees", <BankOutlined />),
   getItem("Fees Record", "/admin/feerecord", <FaRupeeSign />),
   getItem("Results", "/admin/result", <DesktopOutlined />),
   getItem("All Classes", "", <BsFillBuildingsFill />, [
@@ -121,7 +125,7 @@ const Sidebar = () => {
           {location.pathname === "/admin" ? (
             <div>
               <img
-                style={{ width: "95%" }}
+                className="admin-dashboard-image"
                 src="https://media.istockphoto.com/id/171306436/photo/red-brick-high-school-building-exterior.jpg?s=612x612&w=0&k=20&c=vksDyCVrfCpvb9uk4-wcBYu6jbTZ3nCOkGHPSgNy-L0="
                 alt="school"
               />

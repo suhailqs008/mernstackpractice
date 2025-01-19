@@ -11,8 +11,9 @@
 }
 
 .school-logo {
-  width: 55px;
-  height: 55px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
 
 .header-text {

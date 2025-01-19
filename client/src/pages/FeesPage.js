@@ -133,7 +133,8 @@ const AdmissionSearch = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>Search Student</h2>
+      <h1>Collect Fees</h1>
+      <h2 style={{ fontWeight: "600", marginLeft: "5px" }}>Search Student</h2>
       <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
         <Search
           placeholder="Enter student name"
