@@ -34,8 +34,12 @@
 .report-title {
   text-align: center;
   margin-top: 20px;
+  font-family: 20px;
+  font-weight: bold;
 }
-
+.report {
+  font-weight: bold;
+}
 .student-details {
   display: flex;
   justify-content: space-between;

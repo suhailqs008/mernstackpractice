@@ -18,9 +18,8 @@ const classOptions = [
 ];
 const resultUrl = process.env.REACT_APP_RESULT_URL;
 
-const CreateResult = () => {
+const CreateResult = ({ setDataUpdated }) => {
   const [form] = Form.useForm();
-  const [refresh, setRefresh] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleFormSubmit = async (values) => {
@@ -43,9 +42,9 @@ const CreateResult = () => {
     try {
       const response = await axios.post(resultUrl, formattedValues);
       setLoading(false);
-      toast.success("Congratulations! Record Saved Successfully!");
+      toast.success("Congratulations! Marks Saved Successfully!");
       form.resetFields();
-      setRefresh(true);
+      setDataUpdated(true);
     } catch (error) {
       setLoading(false);
       console.error("Error:", error.message);

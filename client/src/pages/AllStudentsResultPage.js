@@ -18,7 +18,7 @@ import {
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import moment from "moment";
 
-const AllStudentsResultPage = () => {
+const AllStudentsResultPage = ({ dataUpdated }) => {
   const [admissions, setAdmissions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [drawerVisible, setDrawerVisible] = useState(false);
@@ -60,7 +60,7 @@ const AllStudentsResultPage = () => {
 
   useEffect(() => {
     fetchAllResults();
-  }, []);
+  }, [dataUpdated]);
 
   const handleEdit = (record) => {
     setEditingRowKey(record.key);

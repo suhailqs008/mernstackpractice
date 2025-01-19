@@ -11,8 +11,8 @@ const FeesReceiptModal = ({ selectedRow, indianTime, capitalizeFirstWord }) => {
             src={logo}
             alt="Logo"
             style={{
-              width: "55px",
-              height: "55px",
+              width: "70px",
+              height: "70px",
               borderRadius: "50%",
               marginBottom: "10px",
             }}
@@ -29,8 +29,8 @@ const FeesReceiptModal = ({ selectedRow, indianTime, capitalizeFirstWord }) => {
             src={logo}
             alt="Logo"
             style={{
-              width: "55px",
-              height: "55px",
+              width: "70px",
+              height: "70px",
               borderRadius: "50%",
               marginBottom: "10px",
             }}

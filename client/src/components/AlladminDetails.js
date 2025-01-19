@@ -27,7 +27,6 @@ const AlladminDetails = ({ dataUpdated }) => {
 
   useEffect(() => {
     fetchAdmins();
-    console.log("admin fetched");
   }, [dataUpdated]);
 
   const handleDelete = async (id) => {

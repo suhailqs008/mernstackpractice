@@ -21,33 +21,28 @@ const ReportCard = ({ selectedRow, indianTime }) => {
     remarks = "First Division";
   }
 
-  const resultColor = percentage < 33 ? "black" : "green";
-
+  const resultColor = percentage < 33 ? "red" : "green";
+  const classNumber = selectedRow.class.split("-")[1];
+  const Class = `Class: ${classNumber}`;
   return (
     <div className="report-card">
       <header className="header">
         <img src={logo} alt="School Logo" className="school-logo" />
         <div className="header-text">
-          <h1>Result Hosting ™</h1>
-          <p>
-            Online Web Platform To Host Exam Results Online <br />
-            Display Your School, University Exam Results Online
+          <h2 className="school-name">APNA SCHOOL SHAHABAD, HARDOI</h2>
+          <p className="affiliation">
+            Affiliated to CBSE, Affiliation No. ABCS120 <br />
+            Kamachha, Varanasi, Uttar Pradesh <br />
+            Ph. +91 478 XXX XXX, Email: xyz@email.com
           </p>
         </div>
         <img src={logo} alt="School Logo" className="school-logo" />
       </header>
 
-      <h2 className="school-name">APNA SCHOOL SHAHABAD, HARDOI</h2>
-      <p className="affiliation">
-        Affiliated to CBSE, Affiliation No. ABCS120 <br />
-        Kamachha, Varanasi, Uttar Pradesh <br />
-        Ph. +91 478 XXX XXX, Email: xyz@email.com
-      </p>
-
       <h3 className="report-title">
         <span className="report"> Report Card</span>
         <br />
-        Class : {selectedRow.class} <br />
+        {Class} <br />
         Academic Session: {selectedRow.session} Yearly
       </h3>
 
