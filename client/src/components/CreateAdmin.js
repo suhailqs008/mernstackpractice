@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Form, Input, Button, Select, message } from "antd";
-
-const CreateAdmin = ({ token }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("staff");
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const CreateAdmin = ({ token, setDataUpdated }) => {
+  const [form] = Form.useForm();
   const url = process.env.REACT_APP_CREATE_ADMIN_URL;
+
   const handleCreateAdmin = async (values) => {
     const { email, password, role } = values;
 
@@ -16,7 +16,10 @@ const CreateAdmin = ({ token }) => {
         { email, password, role },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      message.success(response.data.message);
+      toast.success("Credentials created successfully!");
+
+      form.resetFields();
+      setDataUpdated(true);
     } catch (error) {
       message.error(error.response?.data?.message || "Error creating admin.");
     }
@@ -34,6 +37,7 @@ const CreateAdmin = ({ token }) => {
     >
       <h2>Create New Admin</h2>
       <Form
+        form={form}
         name="create-admin-form"
         layout="vertical"
         onFinish={handleCreateAdmin}
@@ -47,12 +51,7 @@ const CreateAdmin = ({ token }) => {
             { type: "email", message: "Please enter a valid email!" },
           ]}
         >
-          <Input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter admin email"
-          />
+          <Input placeholder="Enter admin email" />
         </Form.Item>
 
         <Form.Item
@@ -66,19 +65,16 @@ const CreateAdmin = ({ token }) => {
             },
           ]}
         >
-          <Input.Password
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter admin password"
-          />
+          <Input.Password placeholder="Enter admin password" />
         </Form.Item>
 
-        <Form.Item label="Role" name="role" initialValue={role}>
-          <Select
-            value={role}
-            onChange={(value) => setRole(value)}
-            placeholder="Select role"
-          >
+        <Form.Item
+          label="Role"
+          name="role"
+          initialValue="staff"
+          rules={[{ required: true, message: "Please select a role!" }]}
+        >
+          <Select placeholder="Select role">
             <Select.Option value="staff">Staff</Select.Option>
             <Select.Option value="superadmin">Superadmin</Select.Option>
           </Select>

@@ -3,11 +3,14 @@ import axios from "axios";
 import Table from "./Table";
 import { Button, Popconfirm, message, Spin } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const AlladminDetails = () => {
+const AlladminDetails = ({ dataUpdated }) => {
   const [admins, setAdmins] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+
   const pageSize = 10;
   const url = process.env.REACT_APP_ALL_ADMIN_URL;
 
@@ -24,12 +27,13 @@ const AlladminDetails = () => {
 
   useEffect(() => {
     fetchAdmins();
-  }, []);
+    console.log("admin fetched");
+  }, [dataUpdated]);
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${url}/${id}`);
-      message.success("Admin deleted successfully!");
+      toast.success("Record Deleted Succesfully!");
       setAdmins((prevAdmins) => prevAdmins.filter((admin) => admin._id !== id));
     } catch (error) {
       console.error("Error deleting admin:", error);
