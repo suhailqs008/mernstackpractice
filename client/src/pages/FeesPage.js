@@ -11,6 +11,8 @@ import {
   Spin,
   Table,
 } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+
 import { IoArrowForwardCircle } from "react-icons/io5";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +23,7 @@ const { Search } = Input;
 const AdmissionSearch = () => {
   const [admissions, setAdmissions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [saveLoading, setSaveLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [searched, setSearched] = useState(false);
   const [drawerVisible, setDrawerVisible] = useState(false);
@@ -38,6 +41,7 @@ const AdmissionSearch = () => {
 
     setLoading(true);
     setSearched(true);
+
     try {
       const response = await axios.get(searchUrl, {
         params: { search: value },
@@ -69,14 +73,14 @@ const AdmissionSearch = () => {
         message.error("No record is selected for updating.");
         return;
       }
-
+      setSaveLoading(true);
       const response = await axios.post(updateUrl, updatedValues);
-      console.log(response, "res");
 
       toast.success("Fees Submitted successfully.!");
 
       setDrawerVisible(false);
     } catch (error) {
+      setSaveLoading(false);
       console.error("Error while sending data to the backend:", error);
       message.error("Failed to send data. Please try again.");
     }
@@ -176,6 +180,7 @@ const AdmissionSearch = () => {
         visible={drawerVisible}
         onClose={() => setDrawerVisible(false)}
         width={600}
+        destroyOnClose
       >
         <Form form={form} onFinish={handleSave} layout="vertical">
           <div className="fees-drawer">
@@ -279,13 +284,21 @@ const AdmissionSearch = () => {
               </Select>
             </Form.Item>
           </div>
-          <Button
-            type="primary"
-            style={{ marginTop: "20px" }}
-            htmlType="submit"
-          >
-            Submit
-          </Button>
+          <div className="submit-fees-btn">
+            <Form.Item>
+              <button type="submit" disabled={saveLoading}>
+                {saveLoading ? (
+                  <Spin
+                    indicator={
+                      <LoadingOutlined style={{ fontSize: 20 }} spin />
+                    }
+                  />
+                ) : (
+                  "Submit Marks"
+                )}
+              </button>
+            </Form.Item>
+          </div>
         </Form>
       </Drawer>
     </div>

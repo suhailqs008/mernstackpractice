@@ -237,10 +237,13 @@ const AdmissionsTable = () => {
       ) : (
         <Table
           columns={columns}
-          dataSource={admissions.map((admission) => ({
-            key: admission._id,
-            ...admission,
-          }))}
+          dataSource={admissions
+            .slice()
+            .reverse()
+            .map((admission) => ({
+              key: admission._id,
+              ...admission,
+            }))}
           onPageChange={(page) => setCurrentPage(page)}
           currentPage={currentPage}
           pageSize={pageSize}

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Form, Input, Button, DatePicker, Select, InputNumber } from "antd";
+import { Form, Input, DatePicker, Select, InputNumber, Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -167,9 +169,17 @@ const CreateResult = ({ setDataUpdated }) => {
         </div>
 
         <div className="result-submit-btn">
-          <Button type="primary" htmlType="submit" block loading={loading}>
-            Submit Result
-          </Button>
+          <Form.Item>
+            <button type="submit" disabled={loading}>
+              {loading ? (
+                <Spin
+                  indicator={<LoadingOutlined style={{ fontSize: 20 }} spin />}
+                />
+              ) : (
+                "Submit Marks"
+              )}
+            </button>
+          </Form.Item>
         </div>
       </Form>
     </>

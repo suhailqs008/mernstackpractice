@@ -49,26 +49,6 @@ h1 {
 .form-item {
   margin-bottom: 20px;
 }
-
-@media screen and (min-width: 200px) and (max-width: 1024px) {
-  .main-container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .form-wrapper {
-    width: 100%;
-  }
-
-  .left-image-container {
-    width: 100%;
-  }
-
-  .form-wrapper-div {
-    margin: auto;
-  }
-}
-
 .submit_btn {
   width: 20%;
   margin: auto;
@@ -86,4 +66,26 @@ h1 {
 }
 .submit_btn button:hover {
   opacity: 0.6;
+}
+@media screen and (min-width: 200px) and (max-width: 1024px) {
+  .main-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-wrapper {
+    width: 100%;
+  }
+
+  .left-image-container {
+    width: 100%;
+  }
+
+  .form-wrapper-div {
+    margin: auto;
+  }
+  .submit_btn {
+    width: 50%;
+    margin: auto;
+  }
 }

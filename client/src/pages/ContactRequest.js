@@ -12,6 +12,7 @@ const ContactRequest = () => {
   const fetchContactDetails = async () => {
     try {
       const response = await axios.get(url);
+
       setContact(response.data.data);
     } catch (error) {
       console.error("Error fetching contacts:", error);

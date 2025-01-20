@@ -18,18 +18,7 @@ const FooterSection = () => {
       <Row gutter={[16, 16]} justify="space-between" align="middle">
         <Col xs={24} sm={12} md={6}>
           <div style={{ textAlign: "center" }}>
-            <img
-              src={logo}
-              alt="Logo"
-              style={{
-                width: "50px",
-                height: "50px",
-                cursor: "pointer",
-                borderRadius: "50%",
-                marginBottom: "10px",
-              }}
-            />
-            <p>© Apna School 2025. All Rights Reserved</p>
+            <h4 className="footer-heading">Find us on social Media</h4>
           </div>
           <div
             className="social-icons"
@@ -68,6 +57,10 @@ const FooterSection = () => {
               <WhatsAppOutlined className="whatsapp-icon" />
             </a>
           </div>
+          <hr style={{ margin: "8px 0px", border: ".5px solid #303d43" }} />
+          <p style={{ color: "#303d43" }}>
+            © Apna School 2025. All Rights Reserved
+          </p>
         </Col>
 
         <Col xs={24} sm={12} md={6}>
@@ -87,12 +80,19 @@ const FooterSection = () => {
         <Col xs={24} sm={12} md={6}>
           <h4 className="footer-heading">Our Location</h4>
           <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-            <div style={{ textAlign: "center", borderRadius: "50px" }}>
+            <div
+              style={{
+                textAlign: "center",
+                borderRadius: "50px",
+
+                margin: "auto",
+              }}
+            >
               <div
                 style={{
                   width: "80%",
                   maxWidth: "300px",
-                  margin: "0 auto",
+                  margin: "auto",
                 }}
               >
                 <iframe

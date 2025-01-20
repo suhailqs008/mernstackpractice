@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Form, Input, Button, Select, message } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Form, Input, Select, message, Spin } from "antd";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const CreateAdmin = ({ token, setDataUpdated }) => {
+  const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
   const url = process.env.REACT_APP_CREATE_ADMIN_URL;
 
   const handleCreateAdmin = async (values) => {
     const { email, password, role } = values;
-
+    setLoading(true);
     try {
       const response = await axios.post(
         url,
@@ -21,6 +23,7 @@ const CreateAdmin = ({ token, setDataUpdated }) => {
       form.resetFields();
       setDataUpdated(true);
     } catch (error) {
+      setLoading(false);
       message.error(error.response?.data?.message || "Error creating admin.");
     }
   };
@@ -74,17 +77,24 @@ const CreateAdmin = ({ token, setDataUpdated }) => {
           initialValue="staff"
           rules={[{ required: true, message: "Please select a role!" }]}
         >
-          <Select placeholder="Select role">
+          <Select disabled placeholder="Select role">
             <Select.Option value="staff">Staff</Select.Option>
             <Select.Option value="superadmin">Superadmin</Select.Option>
           </Select>
         </Form.Item>
-
-        <Form.Item>
-          <Button type="primary" htmlType="submit" block>
-            Create Admin
-          </Button>
-        </Form.Item>
+        <div className="create-admin-btn">
+          <Form.Item>
+            <button type="submit" disabled={loading}>
+              {loading ? (
+                <Spin
+                  indicator={<LoadingOutlined style={{ fontSize: 20 }} spin />}
+                />
+              ) : (
+                "Submit"
+              )}
+            </button>
+          </Form.Item>
+        </div>
       </Form>
     </div>
   );

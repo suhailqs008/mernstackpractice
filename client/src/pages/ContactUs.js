@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button, message, Spin } from "antd";
 import contactup from "../assets/contactus.jpg";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const ContactUs = () => {
+  const [saveLoading, setSaveLoading] = useState(false);
+
   const [form] = Form.useForm();
 
   const url = process.env.REACT_APP_CONTACT_URL;
   const onFinish = async (values) => {
+    setSaveLoading(true);
     try {
       const response = await axios.post(url, values);
 
@@ -22,6 +26,8 @@ const ContactUs = () => {
     } catch (error) {
       console.error("Error submitting contact form: ", error);
       message.error("Unable to submit. Please try again later!");
+    } finally {
+      setSaveLoading(false);
     }
   };
 
@@ -99,15 +105,19 @@ const ContactUs = () => {
             >
               <Input.TextArea placeholder="Your Message Here..." rows={4} />
             </Form.Item>
-            <div style={{ width: "30%", margin: "auto", alignItems: "center" }}>
+            <div className="contactus-btn">
               <Form.Item>
-                <Button
-                  className="bg-gray-950 text-white"
-                  htmlType="submit"
-                  block
-                >
-                  Send
-                </Button>
+                <button type="submit" disabled={saveLoading}>
+                  {saveLoading ? (
+                    <Spin
+                      indicator={
+                        <LoadingOutlined style={{ fontSize: 20 }} spin />
+                      }
+                    />
+                  ) : (
+                    "Submit"
+                  )}
+                </button>
               </Form.Item>
             </div>
           </Form>

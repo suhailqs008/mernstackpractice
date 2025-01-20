@@ -17,6 +17,7 @@ const AlladminDetails = ({ dataUpdated }) => {
   const fetchAdmins = async () => {
     try {
       const response = await axios.get(url);
+
       setAdmins(response.data);
     } catch (error) {
       console.error("Error fetching admin data:", error);
@@ -95,10 +96,13 @@ const AlladminDetails = ({ dataUpdated }) => {
       ) : (
         <Table
           columns={columns}
-          dataSource={admins.map((admin) => ({
-            key: admin._id,
-            ...admin,
-          }))}
+          dataSource={admins
+            .slice()
+            .reverse()
+            .map((admin) => ({
+              key: admin._id,
+              ...admin,
+            }))}
           onPageChange={(page) => setCurrentPage(page)}
           currentPage={currentPage}
           pageSize={pageSize}

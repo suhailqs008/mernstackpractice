@@ -110,7 +110,7 @@ const AdminCard = () => {
             style={{ backgroundColor: card.color }}
           >
             <div className="card-content">
-              <h1>{card.count}</h1>
+              <h1 style={{ color: "white" }}>{card.count}</h1>
               <p>{card.title}</p>
             </div>
           </div>

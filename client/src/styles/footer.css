@@ -24,6 +24,11 @@
   color: #1da1f2;
 }
 
+.social-icon-div p:hover {
+  display: flex;
+  flex-direction: column;
+  color: #1da1f2;
+}
 .footer-item {
   cursor: pointer;
   transition: color 0.3s ease;
